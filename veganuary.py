@@ -3,19 +3,60 @@ import json
 
 
 class CalculateResults:
-    rider_data = []
-    stage_results = []
-    a_riders = []
-    b_riders = []
-    c_riders = []
-    d_riders = []
-    a_results = []
-    b_results = []
-    c_results = []
-    d_results = []
+    results_input_data = []
+    riders = {
+        "a": [],
+        "b": [],
+        "c": [],
+        "d": []
+    }
+    stage_results = {
+        "a": [],
+        "b": [],
+        "c": [],
+        "d": []
+    }
+    overall_results = {
+        "a": {
+            "individual_gc": [],
+            "womens_gc": [],
+            "womens_sprint": [],
+            "qom": [],
+            "team_gc": [],
+            "sprint": [],
+            "kom": []
+        },
+        "b": {
+            "individual_gc": [],
+            "womens_gc": [],
+            "womens_sprint": [],
+            "qom": [],
+            "team_gc": [],
+            "sprint": [],
+            "kom": []
+        },
+        "c": {
+            "individual_gc": [],
+            "womens_gc": [],
+            "womens_sprint": [],
+            "qom": [],
+            "team_gc": [],
+            "sprint": [],
+            "kom": []
+        },
+        "d": {
+            "individual_gc": [],
+            "womens_gc": [],
+            "womens_sprint": [],
+            "qom": [],
+            "team_gc": [],
+            "sprint": [],
+            "kom": []
+        },
+    }
 
-    def __init__(self, rider_data=[]):
-        self.rider_data = rider_data
+    def __init__(self, results_input_data=[]):
+        self.results_input_data = results_input_data
         self.load_rider_list()
         self.load_results()
 
@@ -30,31 +71,32 @@ class CalculateResults:
                 "category": row[4],
             }
             if rider["category"] == "A":
-                self.a_riders.append(rider)
+                self.riders["a"].append(rider)
             elif rider["category"] == "B":
-                self.b_riders.append(rider)
+                self.riders["b"].append(rider)
             elif rider["category"] == "C":
-                self.c_riders.append(rider)
+                self.riders["c"].append(rider)
             elif rider["category"] == "D":
-                self.d_riders.append(rider)
+                self.riders["d"].append(rider)
 
-    def load_stage_results(self):
-        self.stage_results = json.loads(self.rider_data)["data"]
+    def add_results_input_data(self, results_input_data):
+        self.results_input_data = results_input_data
 
     def load_results(self):
-        if not self.stage_results:
-            self.load_stage_results()
-        for result in self.stage_results:
-            if result["category"] == "A":
-                self.a_results.append(result)
-            elif result["category"] == "B":
-                self.b_results.append(result)
-            elif result["category"] == "C":
-                self.c_results.append(result)
-            elif result["category"] == "D":
-                self.d_results.append(result)
+        if (self.results_input_data):
+            all_results = json.loads(self.results_input_data)["data"]
+            for result in all_results:
+                if result["category"] == "A":
+                    self.stage_results["a"].append(result)
+                elif result["category"] == "B":
+                    self.stage_results["b"].append(result)
+                elif result["category"] == "C":
+                    self.stage_results["c"].append(result)
+                elif result["category"] == "D":
+                    self.stage_results["d"].append(result)
 
     def get_valid_riders(self, results, riders):
+        # Should use ZP number instead of name - ask Chris if there is a list
         rider_names = []
         validated_riders = []
         for rider in riders:
