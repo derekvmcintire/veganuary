@@ -21,3 +21,8 @@ That's as far as I've got. Next steps should be something like:
 - Have a way to input most current overall results into the `CalculateResults` class (create csv?)
 - Update overall results based on stage results
 - Export as csv
+
+## To get data from ZP
+- There may be a better way of doing this but I didn't see a public API in my quick search
+
+To get the results data I went to Zwift Power, opened the chrome dev tools inspector, went to the network tab and found a network request ending in .json: `1471415_view.json?_=1610320600772` - but you should be able to view it here: https://zwiftpower.com/cache3/results/1471415_view.json?_=1610320600772
