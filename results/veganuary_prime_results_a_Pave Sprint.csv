@@ -1,15 +1,15 @@
-name,elapsed,zwid
-Oliver Milk,20.243,50486
-Nick Hird (CRYO RDT Men),20.675,54593
-Hywel Davies (BRT),20.967,1119043
-Olivier Symoens,21.177,1515010
-Leon O&#039;Regan (TFC Typhoon),21.211,397219
-Nick Hird (CRYO RDT Men),21.653,54593
-Robert McEwan (TFC Typhoon),21.763,619770
-Hywel Davies (BRT),21.806,1119043
-Neil Turner (R3R ACDC),22.047,1360468
-Robert McEwan (TFC Typhoon),22.103,619770
-Leon O&#039;Regan (TFC Typhoon),22.353,397219
-Colin Saunders (OTR RUSH),22.648,798491
-Duncan Johnson (OTR),22.653,2124922
-Pete Brookes (ART Nuclear),22.655,1012404
+registered_name,name,elapsed,zwid,team,subteam
+Oliver Milk,Oliver Milk,20.243,50486,"('BRT',)",
+Nick Hird,Nick Hird (CRYO RDT Men),20.675,54593,"('CRYO-GEN',)",
+Hywel Davies,Hywel Davies (BRT),20.967,1119043,"('BRT',)",
+Olivier Symoens,Olivier Symoens,21.177,1515010,"('Sportsolid',)",
+Leon O'Regan,Leon O&#039;Regan (TFC Typhoon),21.211,397219,"('TFC',)",
+Nick Hird,Nick Hird (CRYO RDT Men),21.653,54593,"('CRYO-GEN',)",
+Robert McEwan,Robert McEwan (TFC Typhoon),21.763,619770,"('TFC',)",
+Hywel Davies,Hywel Davies (BRT),21.806,1119043,"('BRT',)",
+Neil Turner,Neil Turner (R3R ACDC),22.047,1360468,"('Race3R',)",
+Robert McEwan,Robert McEwan (TFC Typhoon),22.103,619770,"('TFC',)",
+Leon O'Regan,Leon O&#039;Regan (TFC Typhoon),22.353,397219,"('TFC',)",
+Colin Saunders,Colin Saunders (OTR RUSH),22.648,798491,"('On the Rivet',)",
+Duncan Johnson,Duncan Johnson (OTR),22.653,2124922,"('On The Rivet',)",
+Pete Brookes,Pete Brookes (ART Nuclear),22.655,1012404,"('ART Nuclear',)",

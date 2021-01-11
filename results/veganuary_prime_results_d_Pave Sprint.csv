@@ -1,13 +1,13 @@
-name,elapsed,zwid
-Christopher Price (TT1 Hypers),24.132,189331
-Jimbo Viny (TFC),24.841,3297493
-Christopher Price (TT1 Hypers),25.178,189331
-Jason Watts &#9419; (Vegan CocoNuts),25.96,983355
-Mark Kassels(TT1 Hypos)9115,26.406,1554576
-Mark Kassels(TT1 Hypos)9115,26.901,1554576
-Cefn O&rsquo;Ryan (ART),27.135,740252
-Andrew Hayton (ART Fusion),27.269,509608
-Fiona Thomson (CMA),27.432,533788
-Leo Hughes (SDW Youth),28.925,2403581
-Fiona Thomson (CMA),29.62,533788
-Henry Bottoms (SDW YOUTH),29.824,3199370
+registered_name,name,elapsed,zwid,team,subteam
+Christopher Price,Christopher Price (TT1 Hypers),24.132,189331,"('Team Type 1',)",
+Jimbo V,Jimbo Viny (TFC),24.841,3297493,"('TFC',)",
+Christopher Price,Christopher Price (TT1 Hypers),25.178,189331,"('Team Type 1',)",
+Jason Watts,Jason Watts &#9419; (Vegan CocoNuts),25.96,983355,"('Team Vegan Dolphins',)",
+Mark Kassels,Mark Kassels(TT1 Hypos)9115,26.406,1554576,"('Green Machine',)",
+Mark Kassels,Mark Kassels(TT1 Hypos)9115,26.901,1554576,"('Green Machine',)",
+Cefn O'Ryan,Cefn O&rsquo;Ryan (ART),27.135,740252,"('ART Fusion',)",
+Andrew Hayton,Andrew Hayton (ART Fusion),27.269,509608,"('ART Fusion',)",
+Fiona Thomson,Fiona Thomson (CMA),27.432,533788,"('Green Machine',)",
+Leo Hughes,Leo Hughes (SDW Youth),28.925,2403581,"('SDW Youth',)",
+Fiona Thomson,Fiona Thomson (CMA),29.62,533788,"('Green Machine',)",
+Henry Bottoms,Henry Bottoms (SDW YOUTH),29.824,3199370,"('SDW Youth',)",

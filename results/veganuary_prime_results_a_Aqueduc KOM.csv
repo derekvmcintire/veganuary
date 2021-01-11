@@ -1,12 +1,12 @@
-name,elapsed,zwid
-Antti Valve (FZR),27.393,195687
-~ Cycopath ~ (Team Vegan) ,28.353,70177
-Hywel Davies (BRT),29.159,1119043
-Hywel Davies (BRT),29.173,1119043
-Tim Elskens (SPSD),29.196,861277
-H-G Becker (VZT) &#128062;,29.679,1765
-Nick Hird (CRYO RDT Men),29.903,54593
-Antti Valve (FZR),31.046,195687
-Olivier Symoens,31.126,1515010
-Alex TenElshof (Finesse) ,31.44,485822
-Robert McEwan (TFC Typhoon),32.054,619770
+registered_name,name,elapsed,zwid,team,subteam
+Antti Vale,Antti Valve (FZR),27.393,195687,"('FZR',)",
+Adam C.,~ Cycopath ~ (Team Vegan) ,28.353,70177,"('Team Vegan Antelopes',)",
+Hywel Davies,Hywel Davies (BRT),29.159,1119043,"('BRT',)",
+Hywel Davies,Hywel Davies (BRT),29.173,1119043,"('BRT',)",
+Tim Elskens,Tim Elskens (SPSD),29.196,861277,"('Sportsolid',)",
+Hans-Georg Becker,H-G Becker (VZT) &#128062;,29.679,1765,"('Team Vegan Alpacas',)",
+Nick Hird,Nick Hird (CRYO RDT Men),29.903,54593,"('CRYO-GEN',)",
+Antti Vale,Antti Valve (FZR),31.046,195687,"('FZR',)",
+Olivier Symoens,Olivier Symoens,31.126,1515010,"('Sportsolid',)",
+Alex TenElshof,Alex TenElshof (Finesse) ,31.44,485822,"('Finesse Rockets',)",
+Robert McEwan,Robert McEwan (TFC Typhoon),32.054,619770,"('TFC',)",

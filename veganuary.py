@@ -194,6 +194,18 @@ class CalculateResults:
             return True
         return False
 
+    def add_rider_data_to_prime_results(self, results, cat):
+        new_results = []
+        for result in results:
+            new_result = dict(result)
+            for rider in self.riders[cat]:
+                if int(rider["zid"]) == int(result["zwid"]):
+                    new_result["registered_name"] = rider["name"]
+                    new_result["team"] = rider["team"],
+                    new_result["subteam"] = rider["subteam"]
+            new_results.append(new_result)
+        return new_results
+
     def get_veganuary_stage_results(self, category):
         # attempt to create a csv from results
         data = self.stage_results[category]
@@ -209,7 +221,8 @@ class CalculateResults:
         data = self.prime_results[category]
         keys = data.keys()
         for key in keys:
+            final_results = self.add_rider_data_to_prime_results(data[key], category)
             with open(f'./results/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["name", "elapsed", "zwid"])
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "name", "elapsed", "zwid", "team", "subteam"])
                 dict_writer.writeheader()
-                dict_writer.writerows(data[key])
+                dict_writer.writerows(final_results)

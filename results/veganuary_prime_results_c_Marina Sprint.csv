@@ -1,14 +1,14 @@
-name,elapsed,zwid
-Jamie Watson (BRT Visma),11.848,448811
-Dean Marriott (Vegan Crocodiles),12.036,410330
-Craig Gritzen &#9445; (Vegan Crocodiles) ,12.176,527678
-Patch Harvey (BRT Cosmos),12.238,88086
-Warren Honey&#129441; (BRT Badgers),12.301,1059788
-Cheryl Muldoon,14.245,113057
-Darrin Cook [Vegan Crocodiles],14.673,2509064
-James Wyatt &#9419; [Team Vegan],14.772,3244114
- 1596 Marco Bregolato (Team Italy 3),14.824,1022750
-Mark Sanders (ART Carbon),14.946,2217260
-Joe Winning (ART neutrons),14.961,435308
-Warren Honey&#129441; (BRT Badgers),15.046,1059788
-Dario Finatti (ITA),15.061,844179
+registered_name,name,elapsed,zwid,team,subteam
+Jamie Watson,Jamie Watson (BRT Visma),11.848,448811,"('BRT',)",
+Dean Marriott,Dean Marriott (Vegan Crocodiles),12.036,410330,"('Team Vegan Spinach',)",
+Craig Gritzen,Craig Gritzen &#9445; (Vegan Crocodiles) ,12.176,527678,"('Team Vegan Crocodiles',)",
+Patrick Harvey,Patch Harvey (BRT Cosmos),12.238,88086,"('BRT',)",
+Warren Honey,Warren Honey&#129441; (BRT Badgers),12.301,1059788,"('BRT',)",
+Cheryl Muldoon,Cheryl Muldoon,14.245,113057,"('Team Vegan Spinach',)",
+Darrin Cook,Darrin Cook [Vegan Crocodiles],14.673,2509064,"('Team Vegan Crocodiles',)",
+James Wyatt,James Wyatt &#9419; [Team Vegan],14.772,3244114,"('Team Vegan Coconuts',)",
+Marco Bregolato, 1596 Marco Bregolato (Team Italy 3),14.824,1022750,"('Team ITALY',)",
+Mark Sanders,Mark Sanders (ART Carbon),14.946,2217260,"('ART Neutrons',)",
+Joe Winning,Joe Winning (ART neutrons),14.961,435308,"('ART Neutrons',)",
+Warren Honey,Warren Honey&#129441; (BRT Badgers),15.046,1059788,"('BRT',)",
+Dario Finatti,Dario Finatti (ITA),15.061,844179,"('Team ITALY',)",

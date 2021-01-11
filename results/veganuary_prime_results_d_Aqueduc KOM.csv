@@ -1,12 +1,12 @@
-name,elapsed,zwid
-Ryan Biegen TT1D (TT1 Gluconauts),41.873,2952708
-Nathan Tully (SDW Youth),43.901,2757731
-Jimbo Viny (TFC),44.56,3297493
-Jason Watts &#9419; (Vegan CocoNuts),45.734,983355
-Henry Bottoms (SDW YOUTH),48.697,3199370
-Nathan Tully (SDW Youth),49.14,2757731
-Cefn O&rsquo;Ryan (ART),50.705,740252
-Leo Hughes (SDW Youth),51.822,2403581
-Jimbo Viny (TFC),52.119,3297493
-Cefn O&rsquo;Ryan (ART),52.938,740252
-Pierre-Alexandre Tarrieu,53.578,3314041
+registered_name,name,elapsed,zwid,team,subteam
+Ryan Biegen,Ryan Biegen TT1D (TT1 Gluconauts),41.873,2952708,"('Team Type 1',)",
+Nathan Tully,Nathan Tully (SDW Youth),43.901,2757731,"('SDW Youth',)",
+Jimbo V,Jimbo Viny (TFC),44.56,3297493,"('TFC',)",
+Jason Watts,Jason Watts &#9419; (Vegan CocoNuts),45.734,983355,"('Team Vegan Dolphins',)",
+Henry Bottoms,Henry Bottoms (SDW YOUTH),48.697,3199370,"('SDW Youth',)",
+Nathan Tully,Nathan Tully (SDW Youth),49.14,2757731,"('SDW Youth',)",
+Cefn O'Ryan,Cefn O&rsquo;Ryan (ART),50.705,740252,"('ART Fusion',)",
+Leo Hughes,Leo Hughes (SDW Youth),51.822,2403581,"('SDW Youth',)",
+Jimbo V,Jimbo Viny (TFC),52.119,3297493,"('TFC',)",
+Cefn O'Ryan,Cefn O&rsquo;Ryan (ART),52.938,740252,"('ART Fusion',)",
+Pierre-Alexandre TARRIEU,Pierre-Alexandre Tarrieu,53.578,3314041,"('Green Machine',)",

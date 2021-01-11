@@ -1,17 +1,17 @@
-name,elapsed,zwid
-Oliver Milk,20.586,50486
-Robert McEwan (TFC Typhoon),20.823,619770
-Nick Hird (CRYO RDT Men),21.073,54593
-Olivier Symoens,21.102,1515010
-Hywel Davies (BRT),21.336,1119043
-Steven Brierley (Nopinz R3R),21.377,43160
-Leon O&#039;Regan (TFC Typhoon),21.65,397219
-Nick Hird (CRYO RDT Men),21.87,54593
-Hywel Davies (BRT),21.931,1119043
-Robert McEwan (TFC Typhoon),21.952,619770
-Scott Gleason (Nopinz R3R),22.058,429529
-Scott Gleason (Nopinz R3R),22.179,429529
-Leon O&#039;Regan (TFC Typhoon),22.316,397219
-Alex  Rockwell (R3R DEV ABBA),22.474,960543
-Pete Brookes (ART Nuclear),22.489,1012404
-Steven Brierley (Nopinz R3R),22.514,43160
+registered_name,name,elapsed,zwid,team,subteam
+Oliver Milk,Oliver Milk,20.586,50486,"('BRT',)",
+Robert McEwan,Robert McEwan (TFC Typhoon),20.823,619770,"('TFC',)",
+Nick Hird,Nick Hird (CRYO RDT Men),21.073,54593,"('CRYO-GEN',)",
+Olivier Symoens,Olivier Symoens,21.102,1515010,"('Sportsolid',)",
+Hywel Davies,Hywel Davies (BRT),21.336,1119043,"('BRT',)",
+Steven Brierley,Steven Brierley (Nopinz R3R),21.377,43160,"('NOPINZ R3R',)",
+Leon O'Regan,Leon O&#039;Regan (TFC Typhoon),21.65,397219,"('TFC',)",
+Nick Hird,Nick Hird (CRYO RDT Men),21.87,54593,"('CRYO-GEN',)",
+Hywel Davies,Hywel Davies (BRT),21.931,1119043,"('BRT',)",
+Robert McEwan,Robert McEwan (TFC Typhoon),21.952,619770,"('TFC',)",
+Scott Gleason,Scott Gleason (Nopinz R3R),22.058,429529,"('NOPINZ R3R',)",
+Scott Gleason,Scott Gleason (Nopinz R3R),22.179,429529,"('NOPINZ R3R',)",
+Leon O'Regan,Leon O&#039;Regan (TFC Typhoon),22.316,397219,"('TFC',)",
+Alex rockwell,Alex  Rockwell (R3R DEV ABBA),22.474,960543,"('LEQP',)",
+Pete Brookes,Pete Brookes (ART Nuclear),22.489,1012404,"('ART Nuclear',)",
+Steven Brierley,Steven Brierley (Nopinz R3R),22.514,43160,"('NOPINZ R3R',)",
