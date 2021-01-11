@@ -26,7 +26,7 @@ WINNING_TIMES_SHAPE = {
     "a": 0,
     "b": 0,
     "c": 0,
-    "d": 0LOL
+    "d": 0
 }
 OVERALL_RSULTS_SHAPE = {
     "a": {

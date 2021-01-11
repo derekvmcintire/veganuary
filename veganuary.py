@@ -8,7 +8,8 @@ from data_shapes import (
     RIDERS_SHAPE,
     STAGE_RESULTS_SHAPE,
     FILTERED_STAGE_RESULTS_SHAPE,
-    REGISTERED_ZIDS_SHAPE
+    REGISTERED_ZIDS_SHAPE,
+    WINNING_TIMES_SHAPE
 )
 
 
@@ -68,10 +69,6 @@ class CalculateResults:
                     filtered_result = self.get_filtered_result_data(result)
                     res = self.add_registered_data_to_result(filtered_result)
                     self.stage_results[cat].append(res)
-            self.add_time_diffs_to_stage_results('a')
-            self.add_time_diffs_to_stage_results('b')
-            self.add_time_diffs_to_stage_results('c')
-            self.add_time_diffs_to_stage_results('d')
 
     def filter_emojis(self, text):
         result = text.encode('unicode-escape').decode('ascii')
@@ -80,12 +77,13 @@ class CalculateResults:
     def get_filtered_result_data(self, result):
         cat = self.get_cat_from_label(result["label"])
         race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
-        time_diff = self.calculate_time_diff(result["race_time"][0], cat)
+        time_diff = self.calculate_time_diff(self.winning_times[cat], Decimal(result["race_time"][0]))
         filtered_result = {
             "zp_name": self.filter_emojis(result["name"]),
             "zid": result["DT_RowId"],
             "category": cat,
             "race_time": race_time,
+            "time_diff": time_diff
         }
         return filtered_result
 
@@ -111,13 +109,13 @@ class CalculateResults:
             return "d"
         return ""
 
-    def calculate_time_diff(self, first_time, race_time):
+    def calculate_time_diff(self, winning_time, race_time):
         # because the time diff should be calculated off the first registered rider
         # and not the overall first finisher, we need to re-calculate
-        if len(self.stage_results[cat]) > 0:
-            first_place_time = Decimalself.stage_results[cat][0]["race_time"]
-            rider_time = datetime.timedelta(seconds=race_time)
-            return first_place_time - rider_time
+        if winning_time > 0:
+            diff = float(race_time - winning_time)
+            rounded = str(datetime.timedelta(seconds=diff))
+            return rounded
         return 0
 
     def get_registered_zids(self, riders):
