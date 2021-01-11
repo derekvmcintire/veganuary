@@ -18,6 +18,7 @@ That's as far as I've got. Next steps should be something like:
 - Out put filtered stage results
 - Will need to input sprint and KOM data separately and write methods to hanlde filtering
 - Output filtered results as csv (mocked the methods but untested)
+
 Then:
 - Have a way to input most current overall results into the `CalculateResults` class (create csv?)
 - Update overall results based on stage results
