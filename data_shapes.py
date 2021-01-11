@@ -22,6 +22,12 @@ FILTERED_STAGE_RESULTS_SHAPE = {
     "c": [],
     "d": []
 }
+WINNING_TIMES_SHAPE = {
+    "a": 0,
+    "b": 0,
+    "c": 0,
+    "d": 0LOL
+}
 OVERALL_RSULTS_SHAPE = {
     "a": {
         "individual_gc": [],

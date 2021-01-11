@@ -2,6 +2,7 @@ import csv
 import json
 import re
 import datetime
+from decimal import Decimal
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -18,6 +19,8 @@ class CalculateResults:
     stage_results = STAGE_RESULTS_SHAPE
     filtered_stage_results = FILTERED_STAGE_RESULTS_SHAPE
     registered_zids = REGISTERED_ZIDS_SHAPE
+    winning_times = WINNING_TIMES_SHAPE
+
 
 
     def __init__(self, results_input_data=""):
@@ -60,21 +63,29 @@ class CalculateResults:
             for result in all_results:
                 cat = self.get_cat_from_label(result["label"])
                 if self.validate_result(result, cat):
+                    if len(self.stage_results[cat]) == 0:
+                        self.winning_times[cat] = Decimal(result["race_time"][0])
                     filtered_result = self.get_filtered_result_data(result)
-                    result_with_rider_data = self.add_registered_data_to_result(filtered_result)
-                    self.stage_results[cat].append(result_with_rider_data)
+                    res = self.add_registered_data_to_result(filtered_result)
+                    self.stage_results[cat].append(res)
+            self.add_time_diffs_to_stage_results('a')
+            self.add_time_diffs_to_stage_results('b')
+            self.add_time_diffs_to_stage_results('c')
+            self.add_time_diffs_to_stage_results('d')
 
     def filter_emojis(self, text):
         result = text.encode('unicode-escape').decode('ascii')
         return result
 
     def get_filtered_result_data(self, result):
+        cat = self.get_cat_from_label(result["label"])
+        race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
+        time_diff = self.calculate_time_diff(result["race_time"][0], cat)
         filtered_result = {
             "zp_name": self.filter_emojis(result["name"]),
             "zid": result["DT_RowId"],
-            "category": self.get_cat_from_label(result["label"]),
-            "race_time": str(datetime.timedelta(seconds=result["race_time"][0])),
-            "time_diff": result["time_diff"]
+            "category": cat,
+            "race_time": race_time,
         }
         return filtered_result
 
@@ -99,6 +110,15 @@ class CalculateResults:
         if label == "4":
             return "d"
         return ""
+
+    def calculate_time_diff(self, first_time, race_time):
+        # because the time diff should be calculated off the first registered rider
+        # and not the overall first finisher, we need to re-calculate
+        if len(self.stage_results[cat]) > 0:
+            first_place_time = Decimalself.stage_results[cat][0]["race_time"]
+            rider_time = datetime.timedelta(seconds=race_time)
+            return first_place_time - rider_time
+        return 0
 
     def get_registered_zids(self, riders):
         # returns a list of registered zids
