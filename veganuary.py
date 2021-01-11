@@ -198,7 +198,7 @@ class CalculateResults:
         # attempt to create a csv from results
         data = self.stage_results[category]
         keys = data[0].keys()
-        with open(f'veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
+        with open(f'./results/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
             dict_writer.writerows(data)
