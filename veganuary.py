@@ -79,14 +79,15 @@ class CalculateResults:
         return filtered_result
 
     def add_registered_data_to_result(self, result):
-        # add rider info to result info
+        # add rider info to result info - not working
         cat = result["category"]
+        new_result = dict(result)
         for rider in self.riders[cat]:
-            if rider["zid"] == result["zid"]:
-                result["registered_name"] = rider["name"]
-                result["team"] = rider["team"],
-                result["subteam"] = rider["subteam"]
-            return result
+            if int(rider["zid"]) == int(result["zid"]):
+                new_result["registered_name"] = rider["name"]
+                new_result["team"] = rider["team"],
+                new_result["subteam"] = rider["subteam"]
+                return new_result
 
     def get_cat_from_label(self, label):
         if label == "1":
@@ -120,7 +121,7 @@ class CalculateResults:
         # attempt to create a csv from results
         data = self.stage_results[category]
         keys = data[0].keys()
-        with open('veganuary_stage_results.csv', 'w', newline='')  as output_file:
+        with open(f'veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
             dict_writer.writerows(data)
