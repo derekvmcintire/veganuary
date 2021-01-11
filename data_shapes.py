@@ -28,6 +28,12 @@ WINNING_TIMES_SHAPE = {
     "c": 0,
     "d": 0
 }
+PRIME_RESULTS_SHAPE = {
+    "a": {},
+    "b": {},
+    "c": {},
+    "d": {}
+}
 OVERALL_RSULTS_SHAPE = {
     "a": {
         "individual_gc": [],

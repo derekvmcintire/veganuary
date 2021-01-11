@@ -9,7 +9,8 @@ from data_shapes import (
     STAGE_RESULTS_SHAPE,
     FILTERED_STAGE_RESULTS_SHAPE,
     REGISTERED_ZIDS_SHAPE,
-    WINNING_TIMES_SHAPE
+    WINNING_TIMES_SHAPE,
+    PRIME_RESULTS_SHAPE
 )
 
 
@@ -21,6 +22,7 @@ class CalculateResults:
     filtered_stage_results = FILTERED_STAGE_RESULTS_SHAPE
     registered_zids = REGISTERED_ZIDS_SHAPE
     winning_times = WINNING_TIMES_SHAPE
+    prime_results = PRIME_RESULTS_SHAPE
 
 
 
@@ -71,6 +73,53 @@ class CalculateResults:
                     res = self.add_registered_data_to_result(filtered_result)
                     self.stage_results[cat].append(res)
 
+    def load_prime_results(self, prime_input_data, cat):
+        all_primes = json.loads(prime_input_data)["data"]
+        for prime in all_primes:
+            self.calculate_prime_results(prime, cat)
+
+    def calculate_prime_results(self, prime, cat):
+        primes_names = self.prime_results[cat].keys()
+        name = prime["name"]
+        if name not in primes_names:
+            self.prime_results[cat][name] = []
+        one = prime["rider_1"]
+        two = prime["rider_2"]
+        three = prime["rider_3"]
+        four = prime["rider_4"]
+        five = prime["rider_5"]
+        six = prime["rider_6"]
+        seven = prime["rider_7"]
+        eight = prime["rider_8"]
+        nine = prime["rider_9"]
+        ten = prime["rider_10"]
+        riders = [one, two, three, four, five, six, seven, eight, nine, ten]
+        validated_riders = []
+        for rider in riders:
+            if self.validate_prime(rider, cat):
+                filtered_rider = {
+                    "name": rider["name"],
+                    "elapsed": rider["elapsed"],
+                    "zwid": rider["zwid"] if rider["zwid"] else 0
+                }
+                validated_riders.append(filtered_rider)
+        if len(validated_riders) > 0:
+            if len(self.prime_results[cat][name]) > 0:
+                for rider in validated_riders:
+                    for i in range(len(self.prime_results[cat][name])):
+                        if rider["elapsed"] < self.prime_results[cat][name][i]["elapsed"]:
+                            rider_data = {
+                                "name": rider["name"],
+                                "elapsed": rider["elapsed"],
+                                "zwid": rider["zwid"] if rider["zwid"] else 0
+                            }
+                            self.prime_results[cat][name].insert(i, rider)
+                            break
+            else:
+                self.prime_results[cat][name] = validated_riders
+        return None
+
+
     def filter_emojis(self, text):
         # need to filter out emojis from ZP names
         result = text.encode('unicode-escape').decode('ascii')
@@ -91,7 +140,7 @@ class CalculateResults:
         return filtered_result
 
     def add_registered_data_to_result(self, result):
-        # add rider info to result info - not working
+        # add rider info to result info
         cat = result["category"]
         new_result = dict(result)
         for rider in self.riders[cat]:
@@ -139,6 +188,12 @@ class CalculateResults:
             return True
         return False
 
+    def validate_prime(self, prime, cat):
+        registered_zids = self.registered_zids[cat]
+        if str(prime["zwid"]) in registered_zids:
+            return True
+        return False
+
     def get_veganuary_stage_results(self, category):
         # attempt to create a csv from results
         data = self.stage_results[category]
@@ -147,3 +202,14 @@ class CalculateResults:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
             dict_writer.writerows(data)
+
+    def get_veganuary_prime_results(self, prime_input_data, category):
+        # attempt to create a csv from results
+        self.load_prime_results(prime_input_data, category)
+        data = self.prime_results[category]
+        keys = data.keys()
+        for key in keys:
+            with open(f'./results/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
+                dict_writer = csv.DictWriter(output_file, ["name", "elapsed", "zwid"])
+                dict_writer.writeheader()
+                dict_writer.writerows(data[key])
