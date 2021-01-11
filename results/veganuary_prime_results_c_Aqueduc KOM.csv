@@ -1,9 +1,9 @@
-registered_name,name,elapsed,zwid,team,subteam
-Philip Sudworth,Philip Sudworth (TFC Kiiroi Maserati),35.188,314508,"('TFC',)",
-Craig Christie ,Craig Christie  (BRT Badgers),35.257,130703,"('BRT',)",
-Patrick Harvey,Patch Harvey (BRT Cosmos),37.677,88086,"('BRT',)",
-David hill,david hill (Tfc Lancaster),38.036,964610,"('TFC',)",
-Cheryl Muldoon,Cheryl Muldoon,40.309,113057,"('Team Vegan Spinach',)",
-Warren Honey,Warren Honey&#129441; (BRT Badgers),40.867,1059788,"('BRT',)",
-Jason Feltus,Jason Feltus&#128057; (CWkgCC),41.318,91269,"('Race3R',)",
-Niccolò Martinoli,1616 Niccol&ograve; Martinoli (Team Italy),41.438,1354660,"('Team ITALY',)",
+registered_name,elapsed,zwid,name,team,subteam
+Philip Sudworth,35.188,314508,Philip Sudworth (TFC Kiiroi Maserati),"('TFC',)",
+Craig Christie ,35.257,130703,Craig Christie  (BRT Badgers),"('BRT',)",
+Patrick Harvey,37.677,88086,Patch Harvey (BRT Cosmos),"('BRT',)",
+David hill,38.036,964610,david hill (Tfc Lancaster),"('TFC',)",
+Cheryl Muldoon,40.309,113057,Cheryl Muldoon,"('Team Vegan Spinach',)",
+Warren Honey,40.867,1059788,Warren Honey&#129441; (BRT Badgers),"('BRT',)",
+Jason Feltus,41.318,91269,Jason Feltus&#128057; (CWkgCC),"('Race3R',)",
+Niccolò Martinoli,41.438,1354660,1616 Niccol&ograve; Martinoli (Team Italy),"('Team ITALY',)",

@@ -211,7 +211,7 @@ class CalculateResults:
         data = self.stage_results[category]
         keys = data[0].keys()
         with open(f'./results/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
-            dict_writer = csv.DictWriter(output_file, keys)
+            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
 
@@ -223,6 +223,6 @@ class CalculateResults:
         for key in keys:
             final_results = self.add_rider_data_to_prime_results(data[key], category)
             with open(f'./results/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["registered_name", "name", "elapsed", "zwid", "team", "subteam"])
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "elapsed", "zwid", "name", "team", "subteam"])
                 dict_writer.writeheader()
                 dict_writer.writerows(final_results)
