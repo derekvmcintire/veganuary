@@ -24,8 +24,6 @@ class CalculateResults:
     winning_times = WINNING_TIMES_SHAPE
     prime_results = PRIME_RESULTS_SHAPE
 
-
-
     def __init__(self, results_input_data=""):
         self.results_input_data = results_input_data # set initial JSON data on the class
         self.load_rider_list() # load rider registration list from csv
@@ -38,7 +36,7 @@ class CalculateResults:
 
     def load_rider_list(self):
         # Loads the list of riders from the csv file in this directory
-        rider_list_file = open('./rider_list.csv', 'r')
+        rider_list_file = open('./veganuary_data/rider_list.csv', 'r')
         rider_list = csv.reader(rider_list_file)
         for row in rider_list:
             rider = {
