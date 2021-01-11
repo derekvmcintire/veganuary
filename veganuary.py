@@ -1,6 +1,7 @@
 import csv
 import json
 import re
+import datetime
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -72,7 +73,7 @@ class CalculateResults:
             "zp_name": self.filter_emojis(result["name"]),
             "zid": result["DT_RowId"],
             "category": self.get_cat_from_label(result["label"]),
-            "race_time": result["race_time"],
+            "race_time": str(datetime.timedelta(seconds=result["race_time"][0])),
             "time_diff": result["time_diff"]
         }
         return filtered_result
