@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -62,9 +63,13 @@ class CalculateResults:
                     result_with_rider_data = self.add_registered_data_to_result(filtered_result)
                     self.stage_results[cat].append(result_with_rider_data)
 
+    def filter_emojis(self, text):
+        result = text.encode('unicode-escape').decode('ascii')
+        return result
+
     def get_filtered_result_data(self, result):
         filtered_result = {
-            "zp_name": result["name"],
+            "zp_name": self.filter_emojis(result["name"]),
             "zid": result["DT_RowId"],
             "category": self.get_cat_from_label(result["label"]),
             "race_time": result["race_time"],
@@ -100,7 +105,6 @@ class CalculateResults:
             zids.append(rider["zid"])
         return zids
 
-
     def validate_result(self, result, cat):
         # checks if this result is from a registered rider in the correct category
         # if dq_cat is not empty, rider has been DQ'd
@@ -114,10 +118,8 @@ class CalculateResults:
     def get_veganuary_stage_results(self, category):
         # attempt to create a csv from results
         data = self.stage_results[category]
-        print (data)
-        # keys = data[0].keys()
-        #
-        # with open('veganuary_stage_results.csv', 'w', newline='')  as output_file:
-        #     dict_writer = csv.DictWriter(output_file, keys)
-        #     dict_writer.writeheader()
-        #     dict_writer.writerows(data)
+        keys = data[0].keys()
+        with open('veganuary_stage_results.csv', 'w', newline='')  as output_file:
+            dict_writer = csv.DictWriter(output_file, keys)
+            dict_writer.writeheader()
+            dict_writer.writerows(data)

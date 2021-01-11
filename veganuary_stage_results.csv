@@ -1,3 +1,65 @@
-name,zid,category
-D. uncan (OTR Haze),2124922,a
-GTR  GRINGO [nopinzR3R],1157845,a
+zp_name,zid,category,race_time,time_diff
+D. uncan (OTR Haze),2124922,a,"[3676.933, 0]",0.308
+GTR  GRINGO [nopinzR3R],1157845,a,"[3676.938, 0]",0.313
+H G.B.(Team Vegan)\ud83d\udc3e,1765,a,"[3677.35, 0]",0.725
+Oliver Milk [BRT],50486,a,"[3677.583, 0]",0.958
+Hywel  Davies [BRT],1119043,a,"[3677.752, 0]",1.127
+Olivier Symoens [SPSD],1515010,a,"[3677.778, 0]",1.153
+Robert McEwan (TFC Typhoon),619770,a,"[3677.875, 0]",1.25
+Joseph Chudyk [Finesse],2568352,a,"[3678.104, 0]",1.479
+. ~ Cycopath ~ (Team Vegan),70177,a,"[3678.12, 0]",1.495
+Zach Harner [nopinzR3R],800272,a,"[3678.155, 0]",1.53
+Nick Hird [CRYO RDT],54593,a,"[3678.307, 0]",1.682
+Scott Gleason [nopinzR3R],429529,a,"[3678.314, 0]",1.689
+Alex TenElshof [Finesse],485822,a,"[3678.433, 0]",1.808
+Joel Chidley (R3R Dev),2366199,a,"[3678.997, 0]",2.372
+Matt Looker [nopinzR3R],260941,a,"[3679.1, 0]",2.475
+Alex  Rockwell,960543,a,"[3679.573, 0]",2.948
+  Sergio A. (Purple Train),600734,a,"[3679.925, 0]",3.3
+Steven Brierley [nopinzR3R],43160,a,"[3680.045, 0]",3.42
+Noah Balch [OTR Blur],1270113,a,"[3680.287, 0]",3.662
+Jono Martin (R3R Dev),593346,a,"[3680.306, 0]",3.681
+Leon O'Regan (TFC),397219,a,"[3680.322, 0]",3.697
+Tim Elskens [SPSD],861277,a,"[3680.591, 0]",3.966
+Antti Valve (FZR),195687,a,"[3680.661, 0]",4.036
+Adam Schwengler (Vegan),177457,a,"[3681.176, 0]",4.551
+Goran Salavec [R3R],92474,a,"[3681.318, 0]",4.693
+Bartosz Nowaczek,358286,a,"[3681.623, 0]",4.998
+A. Gatto \u24cb  [Team Vegan],1107220,a,"[3682.378, 0]",5.753
+Chris Pocock (Socks4Watts),419070,a,"[3682.431, 0]",5.806
+Neil Turner (Race3R),1360468,a,"[3682.634, 0]",6.009
+Charlie Game* (P&M),2492533,a,"[3784.094, 0]",107.469
+8 Lovejoy (R3R),21298,a,"[3786.372, 0]",109.747
+Dan Stimo (R3R Dev),1739200,a,"[3807.036, 0]",130.411
+Mike Christensen (OTR),855068,a,"[3854.911, 0]",178.286
+Simon Hale (ART Nuclear),308195,a,"[3855.498, 0]",178.873
+Erich Byers [Team Vegan Antelopes],1462466,a,"[3855.696, 0]",179.071
+Colin Saunders (OTR),798491,a,"[3855.949, 0]",179.324
+M ROBBO (R3R Dev),693429,a,"[3856.097, 0]",179.472
+Richard Woods \u24cb [Team Vegan],436956,a,"[3856.291, 0]",179.666
+Dennis Hahn(Benefit the Peloton-Go Vegan),269352,a,"[3858.028, 0]",181.403
+B ishop (OTR),3031036,a,"[3858.74, 0]",182.115
+Simon de Kerpel (R3R Dev),401098,a,"[3883.463, 0]",206.838
+Luis Medeiros [Vegan Alpacas] ,270869,a,"[3911.376, 0]",234.751
+Pete Brookes (ART Nuclear),1012404,a,"[3928.798, 0]",252.173
+Joe Monks (Race3R),559287,a,"[3929.74, 0]",253.115
+Robin Braam (Team Vegan),1344107,a,"[3929.885, 0]",253.26
+LES CORRAN (ART Nuclear),255535,a,"[3930.212, 0]",253.587
+James Hayward (Socks4Watts),410468,a,"[3930.246, 0]",253.621
+Filipe Afonso (Jic Racing),2070175,a,"[3930.452, 0]",253.827
+Luis Pinheiro (R3R Dev),510474,a,"[3930.572, 0]",253.947
+Andrew Robinson (TFC),100901,a,"[4013.716, 0]",337.091
+Ben Gamsa (R3R Dev),4762,a,"[4014.493, 0]",337.868
+Dan Welch  (C4C),758463,a,"[4015.354, 0]",338.729
+Jude Milburn (Race3R),1451885,a,"[4015.884, 0]",339.259
+Mark Suret (R3R Dev),879426,a,"[4015.914, 0]",339.289
+  Rich L [Team Vegan],1503420,a,"[4016.096, 0]",339.471
+Cody Juntikka [OTR],2651512,a,"[4016.373, 0]",339.748
+M oaty (R3R Dev),415493,a,"[4016.43, 0]",339.805
+Tom Bass (LEQP) ,457241,a,"[4016.949, 0]",340.324
+Giles Aldridge (ART Nuclear),1490752,a,"[4032.364, 0]",355.739
+Simone Sighinolfi \u24cb [TEAM VEGAN],1085650,a,"[4108.688, 0]",432.063
+JJ. Fraser,1388995,a,"[4338.389, 0]",661.764
+Rolins Neverstop \ud83c\udf31 [Team Vegan],479525,a,"[4339.696, 0]",663.071
+Jens Holloch [Team Vegan],2793838,a,"[4741.331, 0]",1064.706
+Jonny Winward,53428,a,"[5306.513, 0]",1629.888
