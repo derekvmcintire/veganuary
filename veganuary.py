@@ -22,15 +22,15 @@ class CalculateResults:
         self.results_input_data = results_input_data # set initial JSON data on the class
         self.load_rider_list() # load rider registration list from csv
         # load the registered zids by category
-        self.get_registered_zids(self.riders["a"])
-        self.get_registered_zids(self.riders["b"])
-        self.get_registered_zids(self.riders["c"])
-        self.get_registered_zids(self.riders["d"])
+        self.registered_zids["a"] = self.get_registered_zids(self.riders["a"])
+        self.registered_zids["b"] = self.get_registered_zids(self.riders["b"])
+        self.registered_zids["c"] = self.get_registered_zids(self.riders["c"])
+        self.registered_zids["d"] = self.get_registered_zids(self.riders["d"])
         self.load_results() #load stage results from JSON data
 
     def load_rider_list(self):
         # Loads the list of riders from the csv file in this directory
-        rider_list_file = open('./riders.csv', 'r')
+        rider_list_file = open('./rider_list.csv', 'r')
         rider_list = csv.reader(rider_list_file)
         for row in rider_list:
             rider = {
@@ -38,6 +38,9 @@ class CalculateResults:
                 "name": row[1],
                 "team": row[2],
                 "category": row[4],
+                "subteam": row[3],
+                "zp_name": row[5],
+                "zid": row[6]
             }
             if rider["category"] == "A":
                 self.riders["a"].append(rider)
@@ -53,17 +56,17 @@ class CalculateResults:
         if (self.results_input_data):
             all_results = json.loads(self.results_input_data)["data"]
             for result in all_results:
-                if result["category"] == "A":
-                    if self.validate_result(result):
+                if result["label"] == "1":
+                    if self.validate_result(result, "a"):
                         self.stage_results["a"].append(result)
-                elif result["category"] == "B":
-                    if self.validate_result(result):
+                elif result["label"] == "2":
+                    if self.validate_result(result, "b"):
                         self.stage_results["b"].append(result)
-                elif result["category"] == "C":
-                    if self.validate_result(result):
+                elif result["label"] == "3":
+                    if self.validate_result(result, "c"):
                         self.stage_results["c"].append(result)
-                elif result["category"] == "D":
-                    if self.validate_result(result):
+                elif result["label"] == "4":
+                    if self.validate_result(result, "d"):
                         self.stage_results["d"].append(result)
 
     def get_registered_zids(self, riders):
@@ -74,9 +77,10 @@ class CalculateResults:
         return zids
 
 
-    def validate_result(self, result):
+    def validate_result(self, result, cat):
         # checks if this result is from a registered rider in the correct category
-        if result["zid"] in self.registered_zids[result["category"]]:
+        registered_zids = self.registered_zids[cat]
+        if result["DT_RowId"] in registered_zids:
             return True
         return False
 
