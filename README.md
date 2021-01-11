@@ -2,6 +2,8 @@
 
 A Python script that could help automate the process of calculating results for Team Vegan's Veganuary Race League
 
+Clone this repo and then you can:
+
 To run the script open terminal (for mac) and type
 ```
 python3 get_results.py
