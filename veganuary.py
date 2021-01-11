@@ -64,6 +64,7 @@ class CalculateResults:
             for result in all_results:
                 cat = self.get_cat_from_label(result["label"])
                 if self.validate_result(result, cat):
+                    # store winning times so we can calculate time difference
                     if len(self.stage_results[cat]) == 0:
                         self.winning_times[cat] = Decimal(result["race_time"][0])
                     filtered_result = self.get_filtered_result_data(result)
@@ -71,10 +72,12 @@ class CalculateResults:
                     self.stage_results[cat].append(res)
 
     def filter_emojis(self, text):
+        # need to filter out emojis from ZP names
         result = text.encode('unicode-escape').decode('ascii')
         return result
 
     def get_filtered_result_data(self, result):
+        # filters out extra data and sets time data
         cat = self.get_cat_from_label(result["label"])
         race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
         time_diff = self.calculate_time_diff(self.winning_times[cat], Decimal(result["race_time"][0]))
@@ -99,6 +102,7 @@ class CalculateResults:
                 return new_result
 
     def get_cat_from_label(self, label):
+        # cats are stored as label in ZP data
         if label == "1":
             return "a"
         if label == "2":
