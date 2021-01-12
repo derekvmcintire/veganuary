@@ -206,6 +206,31 @@ class StageResultsModel:
             new_results.append(new_result)
         return new_results
 
+    def filter_prime_results(self, results):
+        # removes duplicate riders so each rider only has a single best time
+        # separates womens results and adds them to the end
+        filtered_results = []
+        filtered_w_results = []
+        in_filtered_results = False
+        for r in results:
+            if r["gender"] == '1':
+                if len(filtered_results) > 0:
+                    for f in filtered_results:
+                        if r["registered_name"] == f["registered_name"]:
+                            in_filtered_results = True
+                if len(filtered_results) < 10 and not in_filtered_results:
+                    filtered_results.append(r)
+            elif r["gender"] == '2':
+                if len(filtered_w_results) > 0:
+                    for f in filtered_w_results:
+                        if r["registered_name"] == f["registered_name"]:
+                            in_filtered_results = True
+                if len(filtered_w_results) < 10 and not in_filtered_results:
+                    filtered_w_results.append(r)
+            in_filtered_results = False
+        filtered_results.extend(filtered_w_results)
+        return filtered_results
+
     def get_veganuary_stage_results(self, category, stage):
         # attempt to create a csv from results
         data = self.stage_results[category]
@@ -221,7 +246,8 @@ class StageResultsModel:
         data = self.prime_results[category]
         keys = data.keys()
         for key in keys:
-            final_results = self.add_rider_data_to_prime_results(data[key], category)
+            results_with_rider_data = self.add_rider_data_to_prime_results(data[key], category)
+            final_results = self.filter_prime_results(results_with_rider_data)
             with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
                 dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "elapsed", "zwid", "name", "team", "subteam"])
                 dict_writer.writeheader()
