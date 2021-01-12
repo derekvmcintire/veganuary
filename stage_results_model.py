@@ -14,7 +14,7 @@ from data_shapes import (
 )
 
 
-class CalculateResults:
+class StageResultsModel:
     # initialize class properties
     results_input_data = []
     riders = RIDERS_SHAPE
@@ -165,8 +165,7 @@ class CalculateResults:
         # and not the overall first finisher, we need to re-calculate
         if winning_time > 0:
             diff = float(race_time - winning_time)
-            rounded = str(datetime.timedelta(seconds=diff))
-            return rounded
+            return str(datetime.timedelta(seconds=diff))
         return 0
 
     def get_registered_zids(self, riders):
@@ -204,23 +203,23 @@ class CalculateResults:
             new_results.append(new_result)
         return new_results
 
-    def get_veganuary_stage_results(self, category):
+    def get_veganuary_stage_results(self, category, stage):
         # attempt to create a csv from results
         data = self.stage_results[category]
         keys = data[0].keys()
-        with open(f'./results/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
+        with open(f'./results/stage_{stage}/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
             dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
 
-    def get_veganuary_prime_results(self, prime_input_data, category):
+    def get_veganuary_prime_results(self, prime_input_data, category, stage):
         # attempt to create a csv from results
         self.load_prime_results(prime_input_data, category)
         data = self.prime_results[category]
         keys = data.keys()
         for key in keys:
             final_results = self.add_rider_data_to_prime_results(data[key], category)
-            with open(f'./results/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
+            with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
                 dict_writer = csv.DictWriter(output_file, ["registered_name", "elapsed", "zwid", "name", "team", "subteam"])
                 dict_writer.writeheader()
                 dict_writer.writerows(final_results)
