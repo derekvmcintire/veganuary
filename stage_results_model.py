@@ -36,7 +36,7 @@ class StageResultsModel:
 
     def load_rider_list(self):
         # Loads the list of riders from the csv file in this directory
-        rider_list_file = open('./veganuary_data/rider_list.csv', 'r')
+        rider_list_file = open('./veganuary_data/rider_list_with_gender.csv', 'r')
         rider_list = csv.reader(rider_list_file)
         for row in rider_list:
             rider = {
@@ -46,7 +46,8 @@ class StageResultsModel:
                 "category": row[4],
                 "subteam": row[3],
                 "zp_name": row[5],
-                "zid": row[6]
+                "zid": row[6],
+                "gender": row[7]
             }
             if rider["category"] == "A":
                 self.riders["a"].append(rider)
@@ -144,8 +145,9 @@ class StageResultsModel:
         for rider in self.riders[cat]:
             if int(rider["zid"]) == int(result["zid"]):
                 new_result["registered_name"] = rider["name"]
-                new_result["team"] = rider["team"],
+                new_result["team"] = rider["team"]
                 new_result["subteam"] = rider["subteam"]
+                new_result["gender"] = rider["gender"]
                 return new_result
 
     def get_cat_from_label(self, label):
@@ -198,8 +200,9 @@ class StageResultsModel:
             for rider in self.riders[cat]:
                 if int(rider["zid"]) == int(result["zwid"]):
                     new_result["registered_name"] = rider["name"]
-                    new_result["team"] = rider["team"],
+                    new_result["team"] = rider["team"]
                     new_result["subteam"] = rider["subteam"]
+                    new_result["gender"] = rider["gender"]
             new_results.append(new_result)
         return new_results
 
@@ -208,7 +211,7 @@ class StageResultsModel:
         data = self.stage_results[category]
         keys = data[0].keys()
         with open(f'./results/stage_{stage}/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
-            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
+            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
 
@@ -220,6 +223,6 @@ class StageResultsModel:
         for key in keys:
             final_results = self.add_rider_data_to_prime_results(data[key], category)
             with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["registered_name", "elapsed", "zwid", "name", "team", "subteam"])
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "elapsed", "zwid", "name", "team", "subteam"])
                 dict_writer.writeheader()
                 dict_writer.writerows(final_results)
