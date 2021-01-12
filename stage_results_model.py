@@ -248,7 +248,7 @@ class StageResultsModel:
         for key in keys:
             results_with_rider_data = self.add_rider_data_to_prime_results(data[key], category)
             final_results = self.filter_prime_results(results_with_rider_data)
-            with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
+            with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key.replace(" ", "_")}.csv', 'w', newline='')  as output_file:
                 dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "elapsed", "zwid", "name", "team", "subteam"])
                 dict_writer.writeheader()
                 dict_writer.writerows(final_results)
