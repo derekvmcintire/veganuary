@@ -34,15 +34,6 @@ I have input the latest data as CSVs in the `veganuary_data/standings` directory
 Next:
 - Use the current overall standings and the stage results to calculate new overall standings
 
-## To get data from ZP
-- There may be a better way of doing this but I didn't see a public API in my quick search
-
-To get the results data I went to Zwift Power, opened the chrome dev tools inspector, went to the network tab and found a network request ending in .json: `1471415_zwift.json?_=1610371372960` - but you should be able to view it here: https://zwiftpower.com/cache3/results/1471415_zwift.json?_=1610371372960
-Note:
-- These results have NOT been filtered for UPG/HR/WKG from what I can tell
-- I believe the "label" key is used for category cat A = lable: 1, cat B = label: 2 etc.
-- For prime data, you need to select the category and "fastest time" and get data separately for each category
-
 # Getting Results After a New Stage
 ## Get Stage Data From ZwiftPower
 - To get the results data, open the chrome dev tools inspector (right click, inspect), go to the network tab and search for a network request ending in `_zwift.json` (something like `1471415_zwift.json?_=1610371372960`). Right click on that request and click `copy response`
@@ -54,7 +45,9 @@ Note:
 - Go back to ZwiftPower and go to the primes tab, select a category and select "fastest time"
 - Look in the networks tab for a network request that should be something like `api3.php?do=event_primes...` and copy the data from that request.
 - Create a new file and variable for that data as well, something like `STAGE_2_PRIME_DATA_C`
+## Create a New Results Directory
 - Add a new directory in the `results` folder and name it `stage_n` (replace `n` with the stage number)
+## Modify the get_results.py file
 - Import your result data into `get_results.py` like this:
   ```
   # import stage 1 data
@@ -98,4 +91,5 @@ Note:
   stage_1_model.get_veganuary_prime_results(STAGE_1_PRIME_DATA_D, "d", 1)
   print("resolving prime results for cat D")
   ```
+## Run the Script
 - Run the script and check that results were populated in your new stage directory under the `results` directory.
