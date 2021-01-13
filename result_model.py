@@ -2,7 +2,7 @@ import csv
 import copy
 import datetime
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from decimal import Decimal
 
 from data_shapes import (
@@ -13,12 +13,16 @@ from data_shapes import (
 
 @dataclass
 class ResultModel:
-    zp_name: str
-    zwid: int
-    category: str
-    display_race_time: str
-    race_time: float
-    time_diff: float
+    zp_name: str = ""
+    zwid: int = 0
+    category: str = ""
+    display_race_time: str = ""
+    race_time: float = 0
+    time_diff: float = 0
+    registered_name: str = ""
+    team: str = ""
+    subteam: str = ""
+    gender: str = ""
 
 class ResultsCollection:
     def __init__(self, input_data, registered_zwids):
@@ -39,7 +43,7 @@ class ResultsCollection:
                         self.winning_times[cat] = Decimal(result["race_time"][0])
                     filtered_result = self.get_filtered_result_data(result, cat)
                     res = self.add_rider_data_to_result(filtered_result, riders)
-                    self.stage_results[cat].append(res)
+                    self.results[cat].append(res)
 
     def get_cat_from_label(self, label):
         # cats are stored as label in ZP data
@@ -83,7 +87,7 @@ class ResultsCollection:
         race_time = Decimal(result["race_time"][0])
         display_race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
         time_diff = self.calculate_time_diff(self.winning_times[cat], race_time)
-        filtered_result = ResultModel
+        filtered_result = ResultModel()
         filtered_result.zp_name = self.filter_emojis(result["name"])
         filtered_result.zwid = result["zwid"]
         filtered_result.category = cat
@@ -102,4 +106,4 @@ class ResultsCollection:
                 result.team = rider.team
                 result.subteam = rider.subteam
                 result.gender = rider.gender
-                return result
+                return asdict(result)

@@ -16,6 +16,12 @@ RESULTS_SHAPE = {
     "c": [],
     "d": []
 }
+PRIME_RESULTS_SHAPE = {
+    "a": {},
+    "b": {},
+    "c": {},
+    "d": {}
+}
 FILTERED_STAGE_RESULTS_SHAPE = {
     "a": [],
     "b": [],

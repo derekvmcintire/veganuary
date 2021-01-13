@@ -2,6 +2,8 @@ import pdb
 from stage_results_model import StageResultsModel
 from overall_standings_model import OverallStandingsModel
 from riders_model import RidersCollection
+from prime_results_model import PrimeResultsCollection
+from zp_data.stage_2.sprint_kom_data import STAGE_2_SPRINT_KOM_DATA
 # import stage 1 data
 from zp_data.stage_1.stage_1_results import STAGE_1_RESULTS
 from zp_data.stage_1.stage_1_prime_a import STAGE_1_PRIME_DATA_A
@@ -23,15 +25,21 @@ STAGE_1_PRIME_DATA_B,
 STAGE_1_PRIME_DATA_C,
 STAGE_1_PRIME_DATA_D
 )
+
+x = PrimeResultsCollection(STAGE_2_SPRINT_KOM_DATA)
+
+
+
+
 # stage results by cat
-stage_1_model.get_veganuary_stage_results("a", 1)
-print("resolving stage results for cat A")
-stage_1_model.get_veganuary_stage_results("b", 1)
-print("resolving stage results for cat B")
-stage_1_model.get_veganuary_stage_results("c", 1)
-print("resolving stage results for cat C")
-stage_1_model.get_veganuary_stage_results("d", 1)
-print("resolving stage results for cat D")
+# stage_1_model.get_veganuary_stage_results("a", 1)
+# print("resolving stage results for cat A")
+# stage_1_model.get_veganuary_stage_results("b", 1)
+# print("resolving stage results for cat B")
+# stage_1_model.get_veganuary_stage_results("c", 1)
+# print("resolving stage results for cat C")
+# stage_1_model.get_veganuary_stage_results("d", 1)
+# print("resolving stage results for cat D")
 # # prime results by cat
 # stage_1_model.get_veganuary_prime_results("a", 1)
 # print("resolving prime results for cat A")
@@ -45,7 +53,7 @@ print("resolving stage results for cat D")
 # I can't figure out why I need to do this, but somehow the data from the first
 # stage is persisting in stage_2_model, even though I intend it to be a
 # completely separate instance
-stage_1_model.clear_model()
+# stage_1_model.clear_model()
 #
 #
 # # Run script for stage 2
