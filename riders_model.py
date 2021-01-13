@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from data_shapes import (
     RIDERS_SHAPE,
+    REGISTERED_ZWIDS_SHAPE
 )
 
 
@@ -22,6 +23,9 @@ class RiderModel:
 class RidersCollection:
     def __init__(self):
         self.registered_riders = copy.deepcopy(RIDERS_SHAPE)
+        self.load_rider_list()
+        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        self.load_registered_zwids()
 
     def load_rider_list(self):
         # Loads the list of riders from the csv file in this directory
@@ -46,8 +50,9 @@ class RidersCollection:
             elif rider.category == "D":
                 self.registered_riders["d"].append(rider)
 
-
-
-# create rider data class
-# create riders model
-# populate riders model with rider data
+    def load_registered_zwids(self):
+        # returns a list of registered zwids
+        categories = self.registered_riders.keys()
+        for cat in categories:
+            for rider in self.registered_riders[cat]:
+                self.registered_zwids[rider.category.lower()].append(rider.zwid)

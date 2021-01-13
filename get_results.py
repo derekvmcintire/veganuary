@@ -32,15 +32,15 @@ stage_1_model.get_veganuary_stage_results("c", 1)
 print("resolving stage results for cat C")
 stage_1_model.get_veganuary_stage_results("d", 1)
 print("resolving stage results for cat D")
-# prime results by cat
-stage_1_model.get_veganuary_prime_results("a", 1)
-print("resolving prime results for cat A")
-stage_1_model.get_veganuary_prime_results("b", 1)
-print("resolving prime results for cat B")
-stage_1_model.get_veganuary_prime_results("c", 1)
-print("resolving prime results for cat C")
-stage_1_model.get_veganuary_prime_results("d", 1)
-print("resolving prime results for cat D")
+# # prime results by cat
+# stage_1_model.get_veganuary_prime_results("a", 1)
+# print("resolving prime results for cat A")
+# stage_1_model.get_veganuary_prime_results("b", 1)
+# print("resolving prime results for cat B")
+# stage_1_model.get_veganuary_prime_results("c", 1)
+# print("resolving prime results for cat C")
+# stage_1_model.get_veganuary_prime_results("d", 1)
+# print("resolving prime results for cat D")
 
 # I can't figure out why I need to do this, but somehow the data from the first
 # stage is persisting in stage_2_model, even though I intend it to be a

@@ -4,10 +4,11 @@ import datetime
 import copy
 from decimal import Decimal
 from riders_model import RidersCollection
+from result_model import ResultsCollection
 
 from data_shapes import (
     RIDERS_SHAPE,
-    STAGE_RESULTS_SHAPE,
+    RESULTS_SHAPE,
     FILTERED_STAGE_RESULTS_SHAPE,
     REGISTERED_ZWIDS_SHAPE,
     WINNING_TIMES_SHAPE,
@@ -20,21 +21,19 @@ class StageResultsModel:
         # initialize class properties
         self.riders_collection = RidersCollection()
         self.riders_collection.load_rider_list()
-        self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
+        self.stage_results = copy.deepcopy(RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
-        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        # self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.results_input_data = results_input_data # set initial JSON data on the class
-        self.registered_zwids["a"] = self.get_registered_zwids(self.riders_collection.registered_riders["a"])
-        self.registered_zwids["b"] = self.get_registered_zwids(self.riders_collection.registered_riders["b"])
-        self.registered_zwids["c"] = self.get_registered_zwids(self.riders_collection.registered_riders["c"])
-        self.registered_zwids["d"] = self.get_registered_zwids(self.riders_collection.registered_riders["d"])
-        self.load_results() #load stage results from JSON data
-        self.load_prime_results(a_prime, "a")
-        self.load_prime_results(b_prime, "b")
-        self.load_prime_results(c_prime, "c")
-        self.load_prime_results(d_prime, "d")
+        # self.load_results() #load stage results from JSON data
+        self.results_collection = ResultsCollection(self.results_input_data, self.riders_collection.registered_zwids)
+        self.results_collection.load_results(self.riders_collection.registered_riders)
+        # self.load_prime_results(a_prime, "a")
+        # self.load_prime_results(b_prime, "b")
+        # self.load_prime_results(c_prime, "c")
+        # self.load_prime_results(d_prime, "d")
 
     def clear_model(self):
         # wipe all data
@@ -42,23 +41,23 @@ class StageResultsModel:
         self.riders = copy.deepcopy(RIDERS_SHAPE)
         self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
-        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        # self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
 
-    def load_results(self):
-        # loads results from JSON and divides by category
-        if (self.results_input_data):
-            all_results = json.loads(self.results_input_data)["data"]
-            for result in all_results:
-                cat = self.get_cat_from_label(result["label"])
-                if self.validate_result(result, cat):
-                    # store winning times so we can calculate time difference
-                    if len(self.stage_results[cat]) == 0:
-                        self.winning_times[cat] = Decimal(result["race_time"][0])
-                    filtered_result = self.get_filtered_result_data(result)
-                    res = self.add_registered_data_to_result(filtered_result)
-                    self.stage_results[cat].append(res)
+    # def load_results(self):
+    #     # loads results from JSON and divides by category
+    #     if (self.results_input_data):
+    #         all_results = json.loads(self.results_input_data)["data"]
+    #         for result in all_results:
+    #             cat = self.get_cat_from_label(result["label"])
+    #             if self.validate_result(result, cat):
+    #                 # store winning times so we can calculate time difference
+    #                 if len(self.stage_results[cat]) == 0:
+    #                     self.winning_times[cat] = Decimal(result["race_time"][0])
+    #                 filtered_result = self.get_filtered_result_data(result)
+    #                 res = self.add_registered_data_to_result(filtered_result)
+    #                 self.stage_results[cat].append(res)
 
     def load_prime_results(self, prime_input_data, cat):
         # loads prime results into the model
@@ -109,10 +108,10 @@ class StageResultsModel:
         return None
 
 
-    def filter_emojis(self, text):
-        # need to filter out emojis from ZP names
-        result = text.encode('unicode-escape').decode('ascii')
-        return result
+    # def filter_emojis(self, text):
+    #     # need to filter out emojis from ZP names
+    #     result = text.encode('unicode-escape').decode('ascii')
+    #     return result
 
     def get_filtered_result_data(self, result):
         # filters out extra data and sets time data
@@ -132,58 +131,58 @@ class StageResultsModel:
         }
         return filtered_result
 
-    def add_registered_data_to_result(self, result):
-        # add rider info to result info
-        cat = result["category"]
-        new_result = dict(result)
-        for rider in self.riders_collection.registered_riders[cat]:
-            if int(rider.zwid) == int(result["zwid"]):
-                new_result["registered_name"] = rider.name
-                new_result["team"] = rider.team
-                new_result["subteam"] = rider.subteam
-                new_result["gender"] = rider.gender
-                return new_result
+    # def add_registered_data_to_result(self, result):
+    #     # add rider info to result info
+    #     cat = result["category"]
+    #     new_result = dict(result)
+    #     for rider in self.riders_collection.registered_riders[cat]:
+    #         if int(rider.zwid) == int(result["zwid"]):
+    #             new_result["registered_name"] = rider.name
+    #             new_result["team"] = rider.team
+    #             new_result["subteam"] = rider.subteam
+    #             new_result["gender"] = rider.gender
+    #             return new_result
 
-    def get_cat_from_label(self, label):
-        # cats are stored as label in ZP data
-        if label == "1":
-            return "a"
-        if label == "2":
-            return "b"
-        if label == "3":
-            return "c"
-        if label == "4":
-            return "d"
-        return ""
+    # def get_cat_from_label(self, label):
+    #     # cats are stored as label in ZP data
+    #     if label == "1":
+    #         return "a"
+    #     if label == "2":
+    #         return "b"
+    #     if label == "3":
+    #         return "c"
+    #     if label == "4":
+    #         return "d"
+    #     return ""
 
-    def calculate_time_diff(self, winning_time: Decimal, race_time: Decimal):
-        # because the time diff should be calculated off the first registered rider
-        # and not the overall first finisher, we need to re-calculate
-        if winning_time > 0:
-            # convert to float for display
-            diff = float(race_time - winning_time)
-            return str(datetime.timedelta(seconds=diff))
-        return 0
+    # def calculate_time_diff(self, winning_time: Decimal, race_time: Decimal):
+    #     # because the time diff should be calculated off the first registered rider
+    #     # and not the overall first finisher, we need to re-calculate
+    #     if winning_time > 0:
+    #         # convert to float for display
+    #         diff = float(race_time - winning_time)
+    #         return str(datetime.timedelta(seconds=diff))
+    #     return 0
 
-    def get_registered_zwids(self, riders):
-        # returns a list of registered zwids
-        zwids = []
-        for rider in riders:
-            zwids.append(rider.zwid)
-        return zwids
+    # def get_registered_zwids(self, riders):
+    #     # returns a list of registered zwids
+    #     zwids = []
+    #     for rider in riders:
+    #         zwids.append(rider.zwid)
+    #     return zwids
 
-    def validate_result(self, result, cat):
-        # checks if this result is from a registered rider in the correct category
-        # if dq_cat is not empty, rider has been DQ'd
-        if result["dq_cat"] != "":
-            return False
-        registered_zwids = self.registered_zwids[cat]
-        if result["DT_RowId"] in registered_zwids:
-            return True
-        return False
+    # def validate_result(self, result, cat):
+    #     # checks if this result is from a registered rider in the correct category
+    #     # if dq_cat is not empty, rider has been DQ'd
+    #     if result["dq_cat"] != "":
+    #         return False
+    #     registered_zwids = self.registered_zwids[cat]
+    #     if result["DT_RowId"] in registered_zwids:
+    #         return True
+    #     return False
 
     def validate_prime(self, prime, cat):
-        registered_zwids = self.registered_zwids[cat]
+        registered_zwids = self.riders_collection.registered_zwids[cat]
         if str(prime["zwid"]) in registered_zwids:
             return True
         return False

@@ -10,7 +10,7 @@ REGISTERED_ZWIDS_SHAPE = {
     "c": [],
     "d": []
 }
-STAGE_RESULTS_SHAPE = {
+RESULTS_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
