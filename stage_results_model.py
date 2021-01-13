@@ -8,7 +8,7 @@ from data_shapes import (
     RIDERS_SHAPE,
     STAGE_RESULTS_SHAPE,
     FILTERED_STAGE_RESULTS_SHAPE,
-    REGISTERED_ZIDS_SHAPE,
+    REGISTERED_ZWIDS_SHAPE,
     WINNING_TIMES_SHAPE,
     PRIME_RESULTS_SHAPE
 )
@@ -20,16 +20,16 @@ class StageResultsModel:
         self.riders = copy.deepcopy(RIDERS_SHAPE)
         self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
-        self.registered_zids = copy.deepcopy(REGISTERED_ZIDS_SHAPE)
+        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.results_input_data = results_input_data # set initial JSON data on the class
         self.load_rider_list() # load rider registration list from csv
-        # load the registered zids by category
-        self.registered_zids["a"] = self.get_registered_zids(self.riders["a"])
-        self.registered_zids["b"] = self.get_registered_zids(self.riders["b"])
-        self.registered_zids["c"] = self.get_registered_zids(self.riders["c"])
-        self.registered_zids["d"] = self.get_registered_zids(self.riders["d"])
+        # load the registered zwids by category
+        self.registered_zwids["a"] = self.get_registered_zwids(self.riders["a"])
+        self.registered_zwids["b"] = self.get_registered_zwids(self.riders["b"])
+        self.registered_zwids["c"] = self.get_registered_zwids(self.riders["c"])
+        self.registered_zwids["d"] = self.get_registered_zwids(self.riders["d"])
         self.load_results() #load stage results from JSON data
         self.load_prime_results(a_prime, "a")
         self.load_prime_results(b_prime, "b")
@@ -42,7 +42,7 @@ class StageResultsModel:
         self.riders = copy.deepcopy(RIDERS_SHAPE)
         self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
-        self.registered_zids = copy.deepcopy(REGISTERED_ZIDS_SHAPE)
+        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
 
@@ -58,7 +58,7 @@ class StageResultsModel:
                 "category": row[4],
                 "subteam": row[3],
                 "zp_name": row[5],
-                "zid": row[6],
+                "zwid": row[6],
                 "gender": row[7]
             }
             if rider["category"] == "A":
@@ -148,7 +148,7 @@ class StageResultsModel:
         time_diff = self.calculate_time_diff(self.winning_times[cat], race_time)
         filtered_result = {
             "zp_name": self.filter_emojis(result["name"]),
-            "zid": result["DT_RowId"],
+            "zwid": result["DT_RowId"],
             "category": cat,
             "display_race_time": display_race_time,
             "time_diff": time_diff,
@@ -161,7 +161,7 @@ class StageResultsModel:
         cat = result["category"]
         new_result = dict(result)
         for rider in self.riders[cat]:
-            if int(rider["zid"]) == int(result["zid"]):
+            if int(rider["zwid"]) == int(result["zwid"]):
                 new_result["registered_name"] = rider["name"]
                 new_result["team"] = rider["team"]
                 new_result["subteam"] = rider["subteam"]
@@ -189,26 +189,26 @@ class StageResultsModel:
             return str(datetime.timedelta(seconds=diff))
         return 0
 
-    def get_registered_zids(self, riders):
-        # returns a list of registered zids
-        zids = []
+    def get_registered_zwids(self, riders):
+        # returns a list of registered zwids
+        zwids = []
         for rider in riders:
-            zids.append(rider["zid"])
-        return zids
+            zwids.append(rider["zwid"])
+        return zwids
 
     def validate_result(self, result, cat):
         # checks if this result is from a registered rider in the correct category
         # if dq_cat is not empty, rider has been DQ'd
         if result["dq_cat"] != "":
             return False
-        registered_zids = self.registered_zids[cat]
-        if result["DT_RowId"] in registered_zids:
+        registered_zwids = self.registered_zwids[cat]
+        if result["DT_RowId"] in registered_zwids:
             return True
         return False
 
     def validate_prime(self, prime, cat):
-        registered_zids = self.registered_zids[cat]
-        if str(prime["zwid"]) in registered_zids:
+        registered_zwids = self.registered_zwids[cat]
+        if str(prime["zwid"]) in registered_zwids:
             return True
         return False
 
@@ -217,7 +217,7 @@ class StageResultsModel:
         for result in results:
             new_result = dict(result)
             for rider in self.riders[cat]:
-                if int(rider["zid"]) == int(result["zwid"]):
+                if int(rider["zwid"]) == int(result["zwid"]):
                     new_result["registered_name"] = rider["name"]
                     new_result["team"] = rider["team"]
                     new_result["subteam"] = rider["subteam"]
@@ -255,7 +255,7 @@ class StageResultsModel:
         data = self.stage_results[category]
         keys = data[0].keys()
         with open(f'./results/stage_{stage}/stage_{stage}_results_{category}.csv', 'w', newline='')  as output_file:
-            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
+            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "time_diff", "zwid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
 

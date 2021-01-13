@@ -4,7 +4,7 @@ RIDERS_SHAPE = {
     "c": [],
     "d": []
 }
-REGISTERED_ZIDS_SHAPE = {
+REGISTERED_ZWIDS_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
