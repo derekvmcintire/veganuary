@@ -1,6 +1,7 @@
 import csv
 import json
 import datetime
+import copy
 from decimal import Decimal
 
 from data_shapes import (
@@ -14,16 +15,14 @@ from data_shapes import (
 
 
 class StageResultsModel:
-    # initialize class properties
-    results_input_data = []
-    riders = RIDERS_SHAPE
-    stage_results = STAGE_RESULTS_SHAPE
-    filtered_stage_results = FILTERED_STAGE_RESULTS_SHAPE
-    registered_zids = REGISTERED_ZIDS_SHAPE
-    winning_times = WINNING_TIMES_SHAPE
-    prime_results = PRIME_RESULTS_SHAPE
-
-    def __init__(self, results_input_data=""):
+    def __init__(self, results_input_data, a_prime, b_prime, c_prime, d_prime):
+        # initialize class properties
+        self.riders = copy.deepcopy(RIDERS_SHAPE)
+        self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
+        self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
+        self.registered_zids = copy.deepcopy(REGISTERED_ZIDS_SHAPE)
+        self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
+        self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.results_input_data = results_input_data # set initial JSON data on the class
         self.load_rider_list() # load rider registration list from csv
         # load the registered zids by category
@@ -32,6 +31,20 @@ class StageResultsModel:
         self.registered_zids["c"] = self.get_registered_zids(self.riders["c"])
         self.registered_zids["d"] = self.get_registered_zids(self.riders["d"])
         self.load_results() #load stage results from JSON data
+        self.load_prime_results(a_prime, "a")
+        self.load_prime_results(b_prime, "b")
+        self.load_prime_results(c_prime, "c")
+        self.load_prime_results(d_prime, "d")
+
+    def clear_model(self):
+        # wipe all data
+        self.results_input_data = []
+        self.riders = copy.deepcopy(RIDERS_SHAPE)
+        self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
+        self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
+        self.registered_zids = copy.deepcopy(REGISTERED_ZIDS_SHAPE)
+        self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
+        self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
 
     def load_rider_list(self):
         # Loads the list of riders from the csv file in this directory
@@ -72,11 +85,13 @@ class StageResultsModel:
                     self.stage_results[cat].append(res)
 
     def load_prime_results(self, prime_input_data, cat):
+        # loads prime results into the model
         all_primes = json.loads(prime_input_data)["data"]
         for prime in all_primes:
             self.calculate_prime_results(prime, cat)
 
     def calculate_prime_results(self, prime, cat):
+        # sorts the prime results by fastest time over all laps
         primes_names = self.prime_results[cat].keys()
         name = prime["name"]
         if name not in primes_names:
@@ -126,14 +141,18 @@ class StageResultsModel:
     def get_filtered_result_data(self, result):
         # filters out extra data and sets time data
         cat = self.get_cat_from_label(result["label"])
-        race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
-        time_diff = self.calculate_time_diff(self.winning_times[cat], Decimal(result["race_time"][0]))
+        # store race time as decimal for calculations but convert to datetime
+        # object for display purposes
+        race_time = Decimal(result["race_time"][0])
+        display_race_time = str(datetime.timedelta(seconds=result["race_time"][0]))
+        time_diff = self.calculate_time_diff(self.winning_times[cat], race_time)
         filtered_result = {
             "zp_name": self.filter_emojis(result["name"]),
             "zid": result["DT_RowId"],
             "category": cat,
-            "race_time": race_time,
-            "time_diff": time_diff
+            "display_race_time": display_race_time,
+            "time_diff": time_diff,
+            "race_time": race_time
         }
         return filtered_result
 
@@ -161,10 +180,11 @@ class StageResultsModel:
             return "d"
         return ""
 
-    def calculate_time_diff(self, winning_time, race_time):
+    def calculate_time_diff(self, winning_time: Decimal, race_time: Decimal):
         # because the time diff should be calculated off the first registered rider
         # and not the overall first finisher, we need to re-calculate
         if winning_time > 0:
+            # convert to float for display
             diff = float(race_time - winning_time)
             return str(datetime.timedelta(seconds=diff))
         return 0
@@ -234,14 +254,13 @@ class StageResultsModel:
         # attempt to create a csv from results
         data = self.stage_results[category]
         keys = data[0].keys()
-        with open(f'./results/stage_{stage}/veganuary_stage_results_{category}.csv', 'w', newline='')  as output_file:
-            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
+        with open(f'./results/stage_{stage}/stage_{stage}_results_{category}.csv', 'w', newline='')  as output_file:
+            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "time_diff", "zid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
 
-    def get_veganuary_prime_results(self, prime_input_data, category, stage):
+    def get_veganuary_prime_results(self, category, stage):
         # attempt to create a csv from results
-        self.load_prime_results(prime_input_data, category)
         data = self.prime_results[category]
         keys = data.keys()
         for key in keys:
