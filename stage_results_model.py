@@ -3,6 +3,7 @@ import json
 import datetime
 import copy
 from decimal import Decimal
+from riders_model import RidersCollection
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -17,19 +18,18 @@ from data_shapes import (
 class StageResultsModel:
     def __init__(self, results_input_data, a_prime, b_prime, c_prime, d_prime):
         # initialize class properties
-        self.riders = copy.deepcopy(RIDERS_SHAPE)
+        self.riders_collection = RidersCollection()
+        self.riders_collection.load_rider_list()
         self.stage_results = copy.deepcopy(STAGE_RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
         self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.results_input_data = results_input_data # set initial JSON data on the class
-        self.load_rider_list() # load rider registration list from csv
-        # load the registered zwids by category
-        self.registered_zwids["a"] = self.get_registered_zwids(self.riders["a"])
-        self.registered_zwids["b"] = self.get_registered_zwids(self.riders["b"])
-        self.registered_zwids["c"] = self.get_registered_zwids(self.riders["c"])
-        self.registered_zwids["d"] = self.get_registered_zwids(self.riders["d"])
+        self.registered_zwids["a"] = self.get_registered_zwids(self.riders_collection.registered_riders["a"])
+        self.registered_zwids["b"] = self.get_registered_zwids(self.riders_collection.registered_riders["b"])
+        self.registered_zwids["c"] = self.get_registered_zwids(self.riders_collection.registered_riders["c"])
+        self.registered_zwids["d"] = self.get_registered_zwids(self.riders_collection.registered_riders["d"])
         self.load_results() #load stage results from JSON data
         self.load_prime_results(a_prime, "a")
         self.load_prime_results(b_prime, "b")
@@ -45,30 +45,6 @@ class StageResultsModel:
         self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
-
-    def load_rider_list(self):
-        # Loads the list of riders from the csv file in this directory
-        rider_list_file = open('./veganuary_data/rider_list_with_gender.csv', 'r')
-        rider_list = csv.reader(rider_list_file)
-        for row in rider_list:
-            rider = {
-                "id": row[0],
-                "name": row[1],
-                "team": row[2],
-                "category": row[4],
-                "subteam": row[3],
-                "zp_name": row[5],
-                "zwid": row[6],
-                "gender": row[7]
-            }
-            if rider["category"] == "A":
-                self.riders["a"].append(rider)
-            elif rider["category"] == "B":
-                self.riders["b"].append(rider)
-            elif rider["category"] == "C":
-                self.riders["c"].append(rider)
-            elif rider["category"] == "D":
-                self.riders["d"].append(rider)
 
     def load_results(self):
         # loads results from JSON and divides by category
@@ -160,12 +136,12 @@ class StageResultsModel:
         # add rider info to result info
         cat = result["category"]
         new_result = dict(result)
-        for rider in self.riders[cat]:
-            if int(rider["zwid"]) == int(result["zwid"]):
-                new_result["registered_name"] = rider["name"]
-                new_result["team"] = rider["team"]
-                new_result["subteam"] = rider["subteam"]
-                new_result["gender"] = rider["gender"]
+        for rider in self.riders_collection.registered_riders[cat]:
+            if int(rider.zwid) == int(result["zwid"]):
+                new_result["registered_name"] = rider.name
+                new_result["team"] = rider.team
+                new_result["subteam"] = rider.subteam
+                new_result["gender"] = rider.gender
                 return new_result
 
     def get_cat_from_label(self, label):
@@ -193,7 +169,7 @@ class StageResultsModel:
         # returns a list of registered zwids
         zwids = []
         for rider in riders:
-            zwids.append(rider["zwid"])
+            zwids.append(rider.zwid)
         return zwids
 
     def validate_result(self, result, cat):
@@ -216,12 +192,12 @@ class StageResultsModel:
         new_results = []
         for result in results:
             new_result = dict(result)
-            for rider in self.riders[cat]:
-                if int(rider["zwid"]) == int(result["zwid"]):
-                    new_result["registered_name"] = rider["name"]
-                    new_result["team"] = rider["team"]
-                    new_result["subteam"] = rider["subteam"]
-                    new_result["gender"] = rider["gender"]
+            for rider in self.riders_collection.registered_riders[cat]:
+                if int(rider.zwid) == int(result["zwid"]):
+                    new_result["registered_name"] = rider.name
+                    new_result["team"] = rider.team
+                    new_result["subteam"] = rider.subteam
+                    new_result["gender"] = rider.gender
             new_results.append(new_result)
         return new_results
 

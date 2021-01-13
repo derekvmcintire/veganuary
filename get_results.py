@@ -1,6 +1,7 @@
 import pdb
 from stage_results_model import StageResultsModel
 from overall_standings_model import OverallStandingsModel
+from riders_model import RidersCollection
 # import stage 1 data
 from zp_data.stage_1.stage_1_results import STAGE_1_RESULTS
 from zp_data.stage_1.stage_1_prime_a import STAGE_1_PRIME_DATA_A
@@ -45,35 +46,35 @@ print("resolving prime results for cat D")
 # stage is persisting in stage_2_model, even though I intend it to be a
 # completely separate instance
 stage_1_model.clear_model()
-
-
-# Run script for stage 2
-stage_2_model = StageResultsModel(
-STAGE_2_RESULTS,
-STAGE_2_PRIME_DATA_A,
-STAGE_2_PRIME_DATA_B,
-STAGE_2_PRIME_DATA_C,
-STAGE_2_PRIME_DATA_D
-)
-
-# stage results by cat
-stage_2_model.get_veganuary_stage_results("a", 2)
-print("resolving stage results for cat A")
-stage_2_model.get_veganuary_stage_results("b", 2)
-print("resolving stage results for cat B")
-stage_2_model.get_veganuary_stage_results("c", 2)
-print("resolving stage results for cat C")
-stage_2_model.get_veganuary_stage_results("d", 2)
-print("resolving stage results for cat D")
-# prime results by cat
-stage_2_model.get_veganuary_prime_results("a", 2)
-print("resolving prime results for cat A")
-stage_2_model.get_veganuary_prime_results("b", 2)
-print("resolving prime results for cat B")
-stage_2_model.get_veganuary_prime_results("c", 2)
-print("resolving prime results for cat C")
-stage_2_model.get_veganuary_prime_results("d", 2)
-print("resolving prime results for cat D")
+#
+#
+# # Run script for stage 2
+# stage_2_model = StageResultsModel(
+# STAGE_2_RESULTS,
+# STAGE_2_PRIME_DATA_A,
+# STAGE_2_PRIME_DATA_B,
+# STAGE_2_PRIME_DATA_C,
+# STAGE_2_PRIME_DATA_D
+# )
+#
+# # stage results by cat
+# stage_2_model.get_veganuary_stage_results("a", 2)
+# print("resolving stage results for cat A")
+# stage_2_model.get_veganuary_stage_results("b", 2)
+# print("resolving stage results for cat B")
+# stage_2_model.get_veganuary_stage_results("c", 2)
+# print("resolving stage results for cat C")
+# stage_2_model.get_veganuary_stage_results("d", 2)
+# print("resolving stage results for cat D")
+# # prime results by cat
+# stage_2_model.get_veganuary_prime_results("a", 2)
+# print("resolving prime results for cat A")
+# stage_2_model.get_veganuary_prime_results("b", 2)
+# print("resolving prime results for cat B")
+# stage_2_model.get_veganuary_prime_results("c", 2)
+# print("resolving prime results for cat C")
+# stage_2_model.get_veganuary_prime_results("d", 2)
+# print("resolving prime results for cat D")
 
 
 # x = OverallStandingsModel(2)
