@@ -42,33 +42,24 @@ Done!
 
 ```
 
-## Stage Results
+## Results
 You can view the results in the above `results` directory
 
-Running the `get results.py` script will process the data stored in the `zp_data` directory compare it to our registration data in the `veganuary_data` directory (currently only for stages 1 and 2) and produce results stored in the `results` directory. Stage results are broken down by category, while prime results are broken down by the prime name and category (i.e. `veganuary_prime_results_c_Marina_Sprint.csv`. At first glance they appear to be accurate, but I haven't combed through them super thoroughly so let me know if you see any errors!
-
-Prime results have the womens results at the end (identified by the gender column having a value of 2)
+Running the `run_script.py` script fetch data for results and primes from zwift power - this can take a few seconds. It then produce results stored in the `results` directory. Stage results are broken down by category, while prime results are broken down by the prime ID and category (i.e. `veganuary_prime_results_c_47.csv`. At first glance they appear to be accurate, but I haven't combed through them super thoroughly so let me know if you see any errors! Note: Prime results are not split by gender yet.
 
 ## Overall Standings
 I have input the latest data as CSVs in the `veganuary_data/standings` directory.
 
 Next:
+- Split primes by gender
 - Use the current overall standings and the stage results to calculate new overall standings
 
 # Getting Results After a New Stage
-## Get Stage Data From ZwiftPower
-- To get the results data, open the chrome dev tools inspector (right click, inspect), go to the network tab and search for a network request ending in `_zwift.json` (something like `1471415_zwift.json?_=1610371372960`). Right click on that request and click `copy response`
-- Create a new file under the `zp_data/stage_n` directory (you will have to create this directory) and name it `stage_n_results.py`
-- Create a new variable and paste the copied data into a multiline string:
-  ```
-  STAGE_4_RESULTS = '''pasted data goes here'''
-  ```
-- Go back to ZwiftPower and go to the primes tab, select a category and select "fastest time"
-- Look in the networks tab for a network request that should be something like `api3.php?do=event_primes...` and copy the data from that request.
-- Create a new file and variable for that data as well, something like `STAGE_2_PRIME_DATA_C`
-## Create a New Results Directory
-- Add a new directory in the `results` folder and name it `stage_n` (replace `n` with the stage number)
+- Get the Zwift Power Event ID
+- Get the sprint and kom IDs
+
 ## Modify the get_results.py file
+*Update This* since this has changged now - it is much simpler!
 - Import your result data into `get_results.py` like this:
   ```
   # import stage 1 data
