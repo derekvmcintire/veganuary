@@ -26,7 +26,7 @@ STAGE_1_PRIME_DATA_C,
 STAGE_1_PRIME_DATA_D
 )
 
-x = PrimeResultsCollection(STAGE_2_SPRINT_KOM_DATA)
+x = PrimeResultsCollection(STAGE_2_SPRINT_KOM_DATA, stage_1_model.riders_collection.registered_zwids)
 
 
 

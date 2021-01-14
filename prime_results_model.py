@@ -3,10 +3,11 @@ import json
 from dataclasses import dataclass, asdict
 
 from data_shapes import (
-    WINNING_TIMES_SHAPE,
     RESULTS_SHAPE,
     PRIME_RESULTS_SHAPE
 )
+
+CATEGORIES = ['a', 'b', 'c', 'd']
 
 @dataclass
 class PrimeModel:
@@ -16,13 +17,16 @@ class PrimeModel:
 
 
 class PrimeResultsCollection:
-    def __init__(self, input_data):
+    def __init__(self, input_data, registered_zwids):
         self.input_data = input_data
-        self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
+        self.registered_zwids = registered_zwids
+        self.winning_times = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.prime_data = copy.deepcopy(RESULTS_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
         self.load_all_prime_data(self.input_data)
-        self.calculate_winning_primes("a")
+        for cat in CATEGORIES:
+            self.calculate_primes_results(cat)
+        breakpoint()
 
     def load_all_prime_data(self, input_data):
         # loads prime results into the model
@@ -40,28 +44,29 @@ class PrimeResultsCollection:
             cat = data["category"].lower()
             self.prime_data[cat].append(data)
 
-    def calculate_winning_primes(self, category):
+    def calculate_primes_results(self, category):
         for data in self.prime_data[category]:
             primes = data["msec"].keys()
+            # validate data is from a registered rider
+            if data["zwid"] in self.registered_zwids[category]:
+                # get all the primes from this race
+                for prime in primes:
+                    if len(self.prime_results[category][prime]) > 0:
+                        for i in range(len(self.prime_results[category][prime])):
+                            if data["msec"][prime] < self.prime_results[category][prime][i]["time"]:
+                                prime_model = PrimeModel(data["name"], data["msec"][prime], data["zwid"])
+                                self.prime_results[category][prime].insert(i, asdict(prime_model))
+                                break
+                            if (i + 1) == len(self.prime_results[category][prime]):
+                                # if we are on the last entry, then add the prime result to the end
+                                self.prime_results[category][prime].append(asdict(prime_model))
+                                break
+                    else:
+                        # this should only happen on the first entry
+                        prime_model = PrimeModel(data["name"], data["msec"][prime], data["zwid"])
+                        self.prime_results[category][prime].append(asdict(prime_model))
+        # grab only the top 10 fastest times and set the winners
+        for results in self.prime_results[category]:
+            primes = data["msec"].keys()
             for prime in primes:
-                if len(self.prime_results[category][prime]) > 0:
-                    for i in range(len(self.prime_results[category][prime])):
-                        if data["msec"][prime] < self.prime_results[category][prime][i].time:
-                            prime_model = PrimeModel(data["name"], data["msec"][prime], data["zwid"])
-                            self.prime_results[category][prime].insert(i, prime_model)
-                else:
-                    prime_model = PrimeModel(data["name"], data["msec"][prime], data["zwid"])
-                    self.prime_results[category][prime].append(prime_model)
-        breakpoint()
-
-    def validate_prime(self, prime, cat):
-        registered_zwids = self.riders_collection.registered_zwids[cat]
-        if str(prime["zwid"]) in registered_zwids:
-            return True
-        return False
-
-    def add_rider_data_to_prime_results(self, results, cat):
-        pass
-
-    def filter_prime_results(self, results):
-        pass
+                self.winning_times[category][prime] = self.prime_results[category][prime][:10]

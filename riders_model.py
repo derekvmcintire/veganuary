@@ -31,16 +31,17 @@ class RidersCollection:
         # Loads the list of riders from the csv file in this directory
         rider_list_file = open('./veganuary_data/rider_list_with_gender.csv', 'r')
         rider_list = csv.reader(rider_list_file)
+        next(rider_list)
         for row in rider_list:
             rider = RiderModel()
-            rider.id = row[0]
+            rider.id = int(row[0])
             rider.name = row[1]
             rider.team = row[2]
             rider.subteam = row[3]
             rider.category = row[4]
             rider.zp_name = row[5]
-            rider.zwid = row[6]
-            rider.gender = row[7]
+            rider.zwid = int(row[6])
+            rider.gender = int(row[7])
             if rider.category == "A":
                 self.registered_riders["a"].append(rider)
             elif rider.category == "B":
