@@ -3,9 +3,9 @@ import json
 import datetime
 import copy
 from decimal import Decimal
-from riders_model import RidersCollection
-from result_model import ResultsCollection
-from prime_results_model import PrimeResultsCollection
+from models.riders_model import RidersCollection
+from models.result_model import ResultsCollection
+from models.prime_results_model import PrimeResultsCollection
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -18,16 +18,17 @@ from data_shapes import (
 
 
 class StageModel:
-    def __init__(self, results_input_data, prime_input_data):
+    def __init__(self, results_input_data, prime_input_data=None):
         # initialize class properties
         self.results_input_data = results_input_data # set initial JSON data on the class
-        self.prime_input_data = prime_input_data
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
         # instantiate a new ResultsCollection and load stage results
         self.results_collection = ResultsCollection(self.results_input_data, self.riders_collection.registered_zwids, self.riders_collection.registered_riders)
-        # instantiate a new PrimeResultsCollection and load prime results
-        self.prime_results_collection = PrimeResultsCollection(self.prime_input_data, self.riders_collection.registered_zwids)
+        if prime_input_data:
+            self.prime_input_data = prime_input_data
+            # instantiate a new PrimeResultsCollection and load prime results
+            self.prime_results_collection = PrimeResultsCollection(self.prime_input_data, self.riders_collection.registered_zwids)
 
     def clear_model(self):
         # wipe all data
