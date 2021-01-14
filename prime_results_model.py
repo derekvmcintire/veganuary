@@ -26,7 +26,7 @@ class PrimeResultsCollection:
         self.load_all_prime_data(self.input_data)
         for cat in CATEGORIES:
             self.calculate_primes_results(cat)
-        breakpoint()
+
 
     def load_all_prime_data(self, input_data):
         # loads prime results into the model

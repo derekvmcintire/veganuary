@@ -25,13 +25,15 @@ class ResultModel:
     gender: str = ""
 
 class ResultsCollection:
-    def __init__(self, input_data, registered_zwids):
+    def __init__(self, input_data, registered_zwids, riders):
         self.input_data = input_data
         self.registered_zwids = registered_zwids
+        self.riders = riders
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
         self.results = copy.deepcopy(RESULTS_SHAPE)
+        self.load_results()
 
-    def load_results(self, riders):
+    def load_results(self):
         # loads results from JSON and divides by category
         if (self.input_data):
             all_results = json.loads(self.input_data)["data"]
@@ -42,8 +44,9 @@ class ResultsCollection:
                     if len(self.results[cat]) == 0:
                         self.winning_times[cat] = Decimal(result["race_time"][0])
                     filtered_result = self.get_filtered_result_data(result, cat)
-                    res = self.add_rider_data_to_result(filtered_result, riders)
+                    res = self.add_rider_data_to_result(filtered_result, self.riders)
                     self.results[cat].append(res)
+
 
     def get_cat_from_label(self, label):
         # cats are stored as label in ZP data
@@ -62,7 +65,7 @@ class ResultsCollection:
         # if dq_cat is not empty, rider has been DQ'd
         if result["dq_cat"] != "":
             return False
-        if result["zwid"] in self.registered_zwids[cat]:
+        if int(result["zwid"]) in self.registered_zwids[cat]:
             return True
         return False
 
@@ -89,7 +92,7 @@ class ResultsCollection:
         time_diff = self.calculate_time_diff(self.winning_times[cat], race_time)
         filtered_result = ResultModel()
         filtered_result.zp_name = self.filter_emojis(result["name"])
-        filtered_result.zwid = result["zwid"]
+        filtered_result.zwid = int(result["zwid"])
         filtered_result.category = cat
         filtered_result.display_race_time = display_race_time
         filtered_result.race_time = race_time
