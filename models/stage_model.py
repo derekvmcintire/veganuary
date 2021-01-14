@@ -19,19 +19,20 @@ from data_shapes import (
 
 
 class StageModel:
-    def __init__(self, event_id, prime_input_data=None):
+    def __init__(self, event_id):
         # initialize class properties
         self.event_id = event_id
         self.zp_requests = ZPRequests(event_id)
         self.results_data = self.zp_requests.get_results()["data"]
+        self.prime_data = self.zp_requests.get_prime_results()["data"]
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
         # instantiate a new ResultsCollection and load stage results
         self.results_collection = ResultsCollection(self.results_data, self.riders_collection.registered_zwids, self.riders_collection.registered_riders)
-        if prime_input_data:
-            self.prime_input_data = prime_input_data
+        if self.prime_data:
+            self.prime_data = self.zp_requests.prime_results["data"]
             # instantiate a new PrimeResultsCollection and load prime results
-            self.prime_results_collection = PrimeResultsCollection(self.prime_input_data, self.riders_collection.registered_zwids)
+            self.prime_results_collection = PrimeResultsCollection(self.prime_data, self.riders_collection.registered_zwids)
 
     def clear_model(self):
         # wipe all data

@@ -19,28 +19,22 @@ class PrimeModel:
 class PrimeResultsCollection:
     def __init__(self, input_data, registered_zwids):
         self.input_data = input_data
+        self.prime_data = copy.deepcopy(RESULTS_SHAPE)
         self.registered_zwids = registered_zwids
         self.winning_times = copy.deepcopy(PRIME_RESULTS_SHAPE)
-        self.prime_data = copy.deepcopy(RESULTS_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
-        self.load_all_prime_data(self.input_data)
+        self.load_prime_data()
         for cat in CATEGORIES:
             self.calculate_primes_results(cat)
 
-
-    def load_all_prime_data(self, input_data):
-        # loads prime results into the model
-        prime_data = json.loads(input_data)["data"]
-        self.load_prime_data(prime_data)
-
-    def load_prime_data(self, prime_data):
-        primes = prime_data[0]["msec"].keys()
+    def load_prime_data(self):
+        primes = self.input_data[0]["msec"].keys()
         for key in primes:
             self.prime_results["a"][key] = []
             self.prime_results["b"][key] = []
             self.prime_results["c"][key] = []
             self.prime_results["d"][key] = []
-        for data in prime_data:
+        for data in self.input_data:
             cat = data["category"].lower()
             self.prime_data[cat].append(data)
 

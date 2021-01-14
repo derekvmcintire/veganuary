@@ -10,9 +10,9 @@ STAGE_2_EVENT_ID = 1471415
 # ================ Run script for stage 1 ==================#
 # ==========================================================#
 # Currently no Sprint or KOM data available for stage 1
+print('Fetching data for stage 1...')
 stage_1 = StageModel(
-STAGE_1_EVENT_ID,
-""
+STAGE_1_EVENT_ID
 )
 stage_1.print_stage_results('a', 1)
 print('Exporting Cat A results for stage 1')
@@ -22,13 +22,22 @@ stage_1.print_stage_results('c', 1)
 print('Exporting Cat C results for stage 1')
 stage_1.print_stage_results('d', 1)
 print('Exporting Cat D results for stage 1')
+stage_1.print_prime_results('a', 1)
+print('Exporting Cat A sprint and KOM results for stage 1')
+stage_1.print_prime_results('b', 1)
+print('Exporting Cat B sprint and KOM results for stage 1')
+stage_1.print_prime_results('c', 1)
+print('Exporting Cat C sprint and KOM results for stage 1')
+stage_1.print_prime_results('d', 1)
+print('Exporting Cat D sprint and KOM results for stage 1')
+print('Done!')
 
 # ==========================================================#
 # ================ Run script for stage 2 ==================#
 # ==========================================================#
+print('Fetching data for stage 2...')
 stage_2 = StageModel(
-STAGE_2_EVENT_ID,
-STAGE_2_SPRINT_KOM_DATA
+STAGE_2_EVENT_ID
 )
 stage_2.print_stage_results('a', 2)
 print('Exporting Cat A results for stage 2')
@@ -46,3 +55,4 @@ stage_2.print_prime_results('c', 2)
 print('Exporting Cat C sprint and KOM results for stage 2')
 stage_2.print_prime_results('d', 2)
 print('Exporting Cat D sprint and KOM results for stage 2')
+print('Done!')
