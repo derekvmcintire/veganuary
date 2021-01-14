@@ -34,18 +34,15 @@ class ResultsCollection:
         self.load_results()
 
     def load_results(self):
-        # loads results from JSON and divides by category
-        if (self.input_data):
-            all_results = json.loads(self.input_data)["data"]
-            for result in all_results:
-                cat = self.get_cat_from_label(result["label"])
-                if self.validate_result(result, cat, self.registered_zwids[cat]):
-                    # store winning times so we can calculate time difference
-                    if len(self.results[cat]) == 0:
-                        self.winning_times[cat] = Decimal(result["race_time"][0])
-                    filtered_result = self.get_filtered_result_data(result, cat)
-                    res = self.add_rider_data_to_result(filtered_result, self.riders)
-                    self.results[cat].append(res)
+        for result in self.input_data:
+            cat = self.get_cat_from_label(result["label"])
+            if self.validate_result(result, cat, self.registered_zwids[cat]):
+                # store winning times so we can calculate time difference
+                if len(self.results[cat]) == 0:
+                    self.winning_times[cat] = Decimal(result["race_time"][0])
+                filtered_result = self.get_filtered_result_data(result, cat)
+                res = self.add_rider_data_to_result(filtered_result, self.riders)
+                self.results[cat].append(res)
 
 
     def get_cat_from_label(self, label):

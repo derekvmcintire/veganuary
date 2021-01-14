@@ -6,6 +6,7 @@ from decimal import Decimal
 from models.riders_model import RidersCollection
 from models.result_model import ResultsCollection
 from models.prime_results_model import PrimeResultsCollection
+from zp_request_library import ZPRequests
 
 from data_shapes import (
     RIDERS_SHAPE,
@@ -18,13 +19,15 @@ from data_shapes import (
 
 
 class StageModel:
-    def __init__(self, results_input_data, prime_input_data=None):
+    def __init__(self, event_id, prime_input_data=None):
         # initialize class properties
-        self.results_input_data = results_input_data # set initial JSON data on the class
+        self.event_id = event_id
+        self.zp_requests = ZPRequests(event_id)
+        self.results_data = self.zp_requests.get_results()["data"]
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
         # instantiate a new ResultsCollection and load stage results
-        self.results_collection = ResultsCollection(self.results_input_data, self.riders_collection.registered_zwids, self.riders_collection.registered_riders)
+        self.results_collection = ResultsCollection(self.results_data, self.riders_collection.registered_zwids, self.riders_collection.registered_riders)
         if prime_input_data:
             self.prime_input_data = prime_input_data
             # instantiate a new PrimeResultsCollection and load prime results
@@ -32,7 +35,7 @@ class StageModel:
 
     def clear_model(self):
         # wipe all data
-        self.results_input_data = []
+        self.results_data = []
         self.riders = copy.deepcopy(RIDERS_SHAPE)
         self.stage_results = copy.deepcopy(RESULTS_SHAPE)
         self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
