@@ -14,14 +14,23 @@ from data_shapes import (
     FILTERED_STAGE_RESULTS_SHAPE,
     REGISTERED_ZWIDS_SHAPE,
     WINNING_TIMES_SHAPE,
-    PRIME_RESULTS_SHAPE
+    PRIME_RESULTS_SHAPE,
+    SINGLE_POINTS,
+    DOUBLE_POINTS
 )
 
 
 class StageModel:
-    def __init__(self, event_id):
+    def __init__(self, event_id, sprints = [], koms = [], sprint_points = DOUBLE_POINTS, kom_points = SINGLE_POINTS):
+        '''
+            event_id: (int) the zwift power event id
+            sprints: (list) list of sprint ids
+            koms: (list) list of kom ids
+        '''
         # initialize class properties
         self.event_id = event_id
+        self.sprints = sprints
+        self.koms = koms
         self.zp_requests = ZPRequests(event_id)
         self.results_data = self.zp_requests.get_results()["data"]
         self.prime_data = self.zp_requests.get_prime_results()["data"]
@@ -32,7 +41,7 @@ class StageModel:
         if self.prime_data:
             self.prime_data = self.zp_requests.prime_results["data"]
             # instantiate a new PrimeResultsCollection and load prime results
-            self.prime_results_collection = PrimeResultsCollection(self.prime_data, self.riders_collection.registered_zwids)
+            self.prime_results_collection = PrimeResultsCollection(self.prime_data, self.riders_collection, self.sprints, self.koms)
 
     def clear_model(self):
         # wipe all data
@@ -59,6 +68,6 @@ class StageModel:
         keys = data.keys()
         for key in keys:
             with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["name", "time", "zwid"])
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "time", "zwid", "zp_name", "points"])
                 dict_writer.writeheader()
                 dict_writer.writerows(data[key])

@@ -40,6 +40,10 @@ PRIME_RESULTS_SHAPE = {
     "c": {},
     "d": {}
 }
+SINGLE_POINTS = [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
+DOUBLE_POINTS = [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
+SPRINT_TYPE = 1
+KOM_TYPE = 2
 OVERALL_RSULTS_SHAPE = {
     "a": {
         "individual_gc": [],

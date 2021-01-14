@@ -13,8 +13,8 @@ class ZPRequests:
         self.event_id = event_id
         self.results = []
         self.prime_results = []
-        self.result_url = 'https://www.zwiftpower.com/cache3/results/{id}_zwift.json?_=1610548964682'.format(id=self.event_id)
-        self.prime_url = 'https://www.zwiftpower.com/api3.php?do=event_sprints&zid={id}&_=1610642675057'.format(id=self.event_id)
+        self.result_url = 'https://www.zwiftpower.com/cache3/results/{id}_zwift.json'.format(id=self.event_id)
+        self.prime_url = 'https://www.zwiftpower.com/api3.php?do=event_sprints&zid={id}'.format(id=self.event_id)
         self.load_event_results()
         self.load_prime_results()
 

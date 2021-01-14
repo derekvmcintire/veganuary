@@ -57,3 +57,10 @@ class RidersCollection:
         for cat in categories:
             for rider in self.registered_riders[cat]:
                 self.registered_zwids[rider.category.lower()].append(rider.zwid)
+
+    def get_rider_by_zwid(self, zwid: int):
+        categories = self.registered_riders.keys()
+        for cat in categories:
+            for rider in self.registered_riders[cat]:
+                if int(rider.zwid) == zwid:
+                    return rider.name

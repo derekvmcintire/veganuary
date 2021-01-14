@@ -1,11 +1,11 @@
-name,time,zwid
-Oliver Milk,20.243,50486
-Nick Hird (CRYO RDT Men),20.675,54593
-Hywel Davies (BRT),20.967,1119043
-Olivier Symoens,21.177,1515010
-Leon O&#039;Regan (TFC),21.211,397219
-Robert McEwan (TFC Typhoon),21.763,619770
-Neil Turner (R3R ACDC),22.047,1360468
-Colin Saunders (OTR RUSH),22.648,798491
-Duncan Johnson (OTR),22.653,2124922
-Pete Brookes (ART Atomic),22.655,1012404
+registered_name,time,zwid,zp_name,points
+Oliver Milk,20.243,50486,Oliver Milk,20
+Nick Hird,20.675,54593,Nick Hird (CRYO RDT Men),15
+Hywel Davies,20.967,1119043,Hywel Davies (BRT),10
+Olivier Symoens,21.177,1515010,Olivier Symoens,8
+Leon O'Regan,21.211,397219,Leon O&#039;Regan (TFC),6
+Robert McEwan,21.763,619770,Robert McEwan (TFC Typhoon),5
+Neil Turner,22.047,1360468,Neil Turner (R3R ACDC),4
+Colin Saunders,22.648,798491,Colin Saunders (OTR RUSH),3
+Duncan Johnson,22.653,2124922,Duncan Johnson (OTR),2
+Pete Brookes,22.655,1012404,Pete Brookes (ART Atomic),1

@@ -1,11 +1,11 @@
-name,time,zwid
-John Bragg (Vegan Spinach),22.196,2646918
-Tim Mennell (TFC Wellington),23.17,2610238
-david hill (TFC Lancaster),23.28,964610
-Warren Honey&#129441; (BRT Badgers),23.409,1059788
-Marko Niederheide (Vegan Spinach),24.023,601425
-Nada 78 &#127793; (Vegan Bees),24.5,189794
-Rudi Peters (OTR Force),25.054,2682294
-Philip Sudworth (TFC),25.359,314508
-Joe Winning (ART neutrons),25.48,435308
-Patch Harvey (BRT Badgers),25.941,88086
+registered_name,time,zwid,zp_name,points
+John Bragg,22.196,2646918,John Bragg (Vegan Spinach),20
+Tim Mennell,23.17,2610238,Tim Mennell (TFC Wellington),15
+David hill,23.28,964610,david hill (TFC Lancaster),10
+Warren Honey,23.409,1059788,Warren Honey&#129441; (BRT Badgers),8
+Marko Niederheide,24.023,601425,Marko Niederheide (Vegan Spinach),6
+Nadezda Polakova,24.5,189794,Nada 78 &#127793; (Vegan Bees),5
+Rudi peters,25.054,2682294,Rudi Peters (OTR Force),4
+Philip Sudworth,25.359,314508,Philip Sudworth (TFC),3
+Joe Winning,25.48,435308,Joe Winning (ART neutrons),2
+Patrick Harvey,25.941,88086,Patch Harvey (BRT Badgers),1

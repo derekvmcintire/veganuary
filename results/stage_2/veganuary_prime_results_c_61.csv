@@ -1,11 +1,11 @@
-name,time,zwid
-John Bragg (Vegan Spinach),22.003,2646918
-david hill (TFC Lancaster),22.096,964610
-Warren Honey&#129441; (BRT Badgers),22.667,1059788
-Tim Mennell (TFC Wellington),23.045,2610238
-Jamie Watson (BRT Visma),23.095,448811
-Dean Marriott (Vegan Spinach),23.97,410330
-Nada 78 &#127793; (Vegan Bees),24.835,189794
-Cheryl Muldoon,24.995,113057
-Marko Niederheide (Vegan Spinach),25.236,601425
-Dario Finatti (ITA),25.484,844179
+registered_name,time,zwid,zp_name,points
+John Bragg,22.003,2646918,John Bragg (Vegan Spinach),20
+David hill,22.096,964610,david hill (TFC Lancaster),15
+Warren Honey,22.667,1059788,Warren Honey&#129441; (BRT Badgers),10
+Tim Mennell,23.045,2610238,Tim Mennell (TFC Wellington),8
+Jamie Watson,23.095,448811,Jamie Watson (BRT Visma),6
+Dean Marriott,23.97,410330,Dean Marriott (Vegan Spinach),5
+Nadezda Polakova,24.835,189794,Nada 78 &#127793; (Vegan Bees),4
+Cheryl Muldoon,24.995,113057,Cheryl Muldoon,3
+Marko Niederheide,25.236,601425,Marko Niederheide (Vegan Spinach),2
+Dario Finatti,25.484,844179,Dario Finatti (ITA),1
