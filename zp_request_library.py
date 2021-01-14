@@ -4,9 +4,10 @@ import copy
 
 
 class ZPRequests:
-    # It looks like we are able to fetch data from the /cache3 endpoints
-    # but I haven't been able to fetch from the /api3 endpoints through the requests module
-    # that said - I can successfully use curl or the browser to get the data on all endpoints
+    # Prime data is working for stage 2
+    # Prime data from ZP for stage 1 is totally wrong. If data is consistent from
+    # stage to stage, this will work, but incorrect data will obviously produce
+    # incorrect results
     def __init__(self, event_id=None):
         self.error = None
         self.event_id = event_id
