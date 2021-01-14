@@ -1,4 +1,11 @@
 # veganuary
+
+## Latest Updates
+- I was having trouble getting all of the prime data since the "primes" tab in ZP only receives data from the top 10 fastest time on each lap, and if there are a lot of unregistered riders in the top 10, that would sometimes leave less than 10 registered riders with data for their times.
+- I was able to find full result data under the "Sprints and KOMs" tab - so I re-wrote the algorithm that calculates prime results and got it working perfectly for stage 2!
+- Problem is that "Sprints and KOMs" tab and the data that comes with it doesn't seem to exist for every race, and stage 1 doesn't have it. So now I have no way to calculate prime data for stage 1 - unless I add the old algorithm back in. I'll do it, but it will only give me partial results. I'm not sure if ZP is having issues or of Chris  got the prime data for stage 1 a different way.
+
+
 A Python script that could help automate the process of calculating results for Team Vegan's Veganuary Race League
 
 Clone this repo and then you can:
