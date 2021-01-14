@@ -17,14 +17,28 @@ python3 get_results.py
 
 You should see something like:
 ```
-resolving stage results for cat A
-resolving stage results for cat B
-resolving stage results for cat C
-resolving stage results for cat D
-resolving prime results for cat A
-resolving prime results for cat B
-resolving prime results for cat C
-resolving prime results for cat D
+➜  veganuary git:(main) ✗ python3 run_script.py
+Fetching data for stage 1...
+Exporting Cat A results for stage 1
+Exporting Cat B results for stage 1
+Exporting Cat C results for stage 1
+Exporting Cat D results for stage 1
+Exporting Cat A sprint and KOM results for stage 1
+Exporting Cat B sprint and KOM results for stage 1
+Exporting Cat C sprint and KOM results for stage 1
+Exporting Cat D sprint and KOM results for stage 1
+Done!
+Fetching data for stage 2...
+Exporting Cat A results for stage 2
+Exporting Cat B results for stage 2
+Exporting Cat C results for stage 2
+Exporting Cat D results for stage 2
+Exporting Cat A sprint and KOM results for stage 2
+Exporting Cat B sprint and KOM results for stage 2
+Exporting Cat C sprint and KOM results for stage 2
+Exporting Cat D sprint and KOM results for stage 2
+Done!
+➜  veganuary git:(main) ✗ 
 
 ```
 
