@@ -19,7 +19,8 @@ from data_shapes import (
 
 class StageModel:
     def __init__(
-            self, event_id,
+            self,
+            event_id,
             finish_sprint = False,
             sprints = [],
             koms = [],
