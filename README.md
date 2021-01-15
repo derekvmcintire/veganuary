@@ -69,26 +69,24 @@ python3 run_script.py
 
 You should see something like:
 ```
-➜  veganuary git:(main) python3 run_script.py                            
-Setting up model and fetching Data for Zwift Power Event ID 1429958...
-Exporting Cat A results for stage 1
-Exporting Cat B results for stage 1
-Exporting Cat C results for stage 1
-Exporting Cat D results for stage 1
-Exporting Cat A sprint and KOM results for stage 1
-Exporting Cat B sprint and KOM results for stage 1
-Exporting Cat C sprint and KOM results for stage 1
-Exporting Cat D sprint and KOM results for stage 1
-Done!
-Setting up model and fetching Data for Zwift Power Event ID 1471415...
-Exporting Cat A results for stage 2
-Exporting Cat B results for stage 2
-Exporting Cat C results for stage 2
-Exporting Cat D results for stage 2
-Exporting Cat A sprint and KOM results for stage 2
-Exporting Cat B sprint and KOM results for stage 2
-Exporting Cat C sprint and KOM results for stage 2
-Exporting Cat D sprint and KOM results for stage 2
-Done!
+➜  veganuary git:(main) ✗ python3 run_script.py
+Setting up model and fetching data for Zwift Power event ID 1429958...
+Exporting Cat A results for stage 1: Zwift Power event ID 1429958
+Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
+Exporting Cat B results for stage 1: Zwift Power event ID 1429958
+Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
+Exporting Cat C results for stage 1: Zwift Power event ID 1429958
+Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
+Exporting Cat D results for stage 1: Zwift Power event ID 1429958
+Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
+Setting up model and fetching data for Zwift Power event ID 1471415...
+Exporting Cat A results for stage 2: Zwift Power event ID 1471415
+Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
+Exporting Cat B results for stage 2: Zwift Power event ID 1471415
+Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
+Exporting Cat C results for stage 2: Zwift Power event ID 1471415
+Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
+Exporting Cat D results for stage 2: Zwift Power event ID 1471415
+Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
 ➜  veganuary git:(main) 
 ```
