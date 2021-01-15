@@ -1,3 +1,4 @@
+CATEGORIES = ['a', 'b', 'c', 'd']
 CATEGORY_SHAPE = {
     "a": [],
     "b": [],

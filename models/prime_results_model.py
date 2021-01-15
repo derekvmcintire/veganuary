@@ -10,10 +10,11 @@ from data_shapes import (
     SINGLE_POINTS,
     DOUBLE_POINTS,
     SPRINT_TYPE,
-    KOM_TYPE
+    KOM_TYPE,
+    CATEGORIES
 )
 
-CATEGORIES = ['a', 'b', 'c', 'd']
+
 
 @dataclass
 class PrimeModel:
@@ -45,7 +46,6 @@ class PrimeResultsCollection:
         self.m_winning_times = copy.deepcopy(PRIME_CATEGORY_SHAPE)
         self.w_winning_times = copy.deepcopy(PRIME_CATEGORY_SHAPE)
         self.prime_results = copy.deepcopy(PRIME_CATEGORY_SHAPE)
-        self.custom_primes = copy.deepcopy(PRIME_CATEGORY_SHAPE)
         self.load_prime_data()
         for cat in CATEGORIES:
             self.calculate_primes_results(cat)
@@ -125,8 +125,11 @@ class PrimeResultsCollection:
 
     def add_points_to_custom_prime(self, results, point_system = DOUBLE_POINTS):
         # similar to above, but with no verification so it can be called from outside the class
-        points = 0
-        for i in range(len(results)):
-            points = point_system[i]
-        if points > 0:
-            results[i]["points"] = points
+        results_copy = copy.deepcopy(results)
+        for i in range(len(results_copy)):
+            try:
+                points = point_system[i]
+                results_copy[i]["points"] = points
+            except:
+                return None
+        return results_copy

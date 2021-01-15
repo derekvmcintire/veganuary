@@ -20,9 +20,12 @@ if get_stage_1_results:
     print('Fetching data for stage 1...')
     stage_1 = StageModel(
     STAGE_1_EVENT_ID,
-    False,
     stage_1_sprints,
-    stage_1_koms
+    stage_1_koms,
+    SINGLE_POINTS,
+    DOUBLE_POINTS,
+    True,
+    DOUBLE_POINTS
     )
     stage_1.print_stage_results('a', 1)
     print('Exporting Cat A results for stage 1')
@@ -49,9 +52,12 @@ if get_stage_2_results:
     print('Fetching data for stage 2...')
     stage_2 = StageModel(
     STAGE_2_EVENT_ID,
-    False,
     stage_2_sprints,
-    stage_2_koms
+    stage_2_koms,
+    SINGLE_POINTS,
+    DOUBLE_POINTS,
+    True,
+    DOUBLE_POINTS
     )
     stage_2.print_stage_results('a', 2)
     print('Exporting Cat A results for stage 2')
