@@ -5,9 +5,9 @@ A Python script that could help automate the process of calculating results for 
 I have input the latest data as CSVs in the `veganuary_data/standings` directory, but there are no calculations for overall standings yet.
 
 ## Viewing Results
-Click on the `results` directory above to find results sorted by stage.
-Stage results can be found separated by category in the following format: `stage_[stage number]_results_[category].csv` i.e. `stage_1_results_a.csv`
-Prime results can be found separated by caegory in the following format: `[gender]_prime_results_[category]_[prime name]` i.e. `w_prime_results_b_54.csv`
+- Click on the `results` directory above to find results sorted by stage.
+- Stage results can be found separated by category in the following format: `stage_[stage number]_results_[category].csv` i.e. `stage_1_results_a.csv`
+- Prime results can be found separated by category in the following format: `[gender]_prime_results_[category]_[prime name]` i.e. `w_prime_results_b_54.csv`
 #### Notes on Primes
 - Points are configurable, I'm not 100% on which primes were used and which ones were worth how many points, so I made my best guess - you can see which ones I passed in to each stage in the `run_script.py` file
 - Primes are only showing by their ID number for now since it's an extra network request to get their names, I can add that later
