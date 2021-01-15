@@ -11,6 +11,8 @@ class OverallStandingsModel:
         self.last_stage = last_stage
         self.valid_zwids = valid_zwids
         self.registered_zwids = copy.deepcopy(CATEGORY_SHAPE)
+        # instantiate a new RidersCollection and load rider data
+        self.riders_collection = RidersCollection()
 
     def load_stages_results(self):
         # Loads the results data

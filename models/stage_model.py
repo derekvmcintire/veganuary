@@ -34,6 +34,7 @@ class StageModel:
             sprints: (list) list of sprint ids
             koms: (list) list of kom ids
         '''
+        print(f'Setting up model and fetching Data for Zwift Power Event ID {event_id}...')
         # initialize class properties
         self.event_id = event_id
         self.sprints = sprints

@@ -13,11 +13,29 @@ stage_1_koms = ['48']
 get_stage_1_results = True
 get_stage_2_results = True
 
+def print_stage_results(stage_model, stage_number):
+    stage_model.print_stage_results('a', stage_number)
+    print(f'Exporting Cat A results for stage {stage_number}')
+    stage_model.print_stage_results('b', stage_number)
+    print(f'Exporting Cat B results for stage {stage_number}')
+    stage_model.print_stage_results('c', stage_number)
+    print(f'Exporting Cat C results for stage {stage_number}')
+    stage_model.print_stage_results('d', stage_number)
+    print(f'Exporting Cat D results for stage {stage_number}')
+    stage_model.print_prime_results('a', stage_number)
+    print(f'Exporting Cat A sprint and KOM results for stage {stage_number}')
+    stage_model.print_prime_results('b', stage_number)
+    print(f'Exporting Cat B sprint and KOM results for stage {stage_number}')
+    stage_model.print_prime_results('c', stage_number)
+    print(f'Exporting Cat C sprint and KOM results for stage {stage_number}')
+    stage_model.print_prime_results('d', stage_number)
+    print(f'Exporting Cat D sprint and KOM results for stage {stage_number}')
+    print('Done!')
+
 # ==========================================================#
 # ================ Run script for stage 1 ==================#
 # ==========================================================#
 if get_stage_1_results:
-    print('Fetching data for stage 1...')
     stage_1 = StageModel(
     STAGE_1_EVENT_ID,
     stage_1_sprints,
@@ -27,29 +45,12 @@ if get_stage_1_results:
     True,
     DOUBLE_POINTS
     )
-    stage_1.print_stage_results('a', 1)
-    print('Exporting Cat A results for stage 1')
-    stage_1.print_stage_results('b', 1)
-    print('Exporting Cat B results for stage 1')
-    stage_1.print_stage_results('c', 1)
-    print('Exporting Cat C results for stage 1')
-    stage_1.print_stage_results('d', 1)
-    print('Exporting Cat D results for stage 1')
-    stage_1.print_prime_results('a', 1)
-    print('Exporting Cat A sprint and KOM results for stage 1')
-    stage_1.print_prime_results('b', 1)
-    print('Exporting Cat B sprint and KOM results for stage 1')
-    stage_1.print_prime_results('c', 1)
-    print('Exporting Cat C sprint and KOM results for stage 1')
-    stage_1.print_prime_results('d', 1)
-    print('Exporting Cat D sprint and KOM results for stage 1')
-    print('Done!')
+    print_stage_results(stage_1, 1)
 
 # ==========================================================#
 # ================ Run script for stage 2 ==================#
 # ==========================================================#
 if get_stage_2_results:
-    print('Fetching data for stage 2...')
     stage_2 = StageModel(
     STAGE_2_EVENT_ID,
     stage_2_sprints,
@@ -59,20 +60,4 @@ if get_stage_2_results:
     True,
     DOUBLE_POINTS
     )
-    stage_2.print_stage_results('a', 2)
-    print('Exporting Cat A results for stage 2')
-    stage_2.print_stage_results('b', 2)
-    print('Exporting Cat B results for stage 2')
-    stage_2.print_stage_results('c', 2)
-    print('Exporting Cat C results for stage 2')
-    stage_2.print_stage_results('d', 2)
-    print('Exporting Cat D results for stage 2')
-    stage_2.print_prime_results('a', 2)
-    print('Exporting Cat A sprint and KOM results for stage 2')
-    stage_2.print_prime_results('b', 2)
-    print('Exporting Cat B sprint and KOM results for stage 2')
-    stage_2.print_prime_results('c', 2)
-    print('Exporting Cat C sprint and KOM results for stage 2')
-    stage_2.print_prime_results('d', 2)
-    print('Exporting Cat D sprint and KOM results for stage 2')
-    print('Done!')
+    print_stage_results(stage_2, 2)
