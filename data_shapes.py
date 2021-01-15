@@ -1,28 +1,28 @@
-RIDERS_SHAPE = {
+CATEGORY_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
     "d": []
 }
-REGISTERED_ZWIDS_SHAPE = {
+CATEGORY_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
     "d": []
 }
-RESULTS_SHAPE = {
+CATEGORY_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
     "d": []
 }
-PRIME_RESULTS_SHAPE = {
+PRIME_CATEGORY_SHAPE = {
     "a": {},
     "b": {},
     "c": {},
     "d": {}
 }
-FILTERED_STAGE_RESULTS_SHAPE = {
+CATEGORY_SHAPE = {
     "a": [],
     "b": [],
     "c": [],
@@ -34,7 +34,7 @@ WINNING_TIMES_SHAPE = {
     "c": 0,
     "d": 0
 }
-PRIME_RESULTS_SHAPE = {
+PRIME_CATEGORY_SHAPE = {
     "a": {},
     "b": {},
     "c": {},

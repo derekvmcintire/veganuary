@@ -7,7 +7,7 @@ from decimal import Decimal
 
 from data_shapes import (
     WINNING_TIMES_SHAPE,
-    RESULTS_SHAPE
+    CATEGORY_SHAPE
 )
 
 
@@ -30,7 +30,7 @@ class ResultsCollection:
         self.registered_zwids = registered_zwids
         self.riders = riders
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
-        self.results = copy.deepcopy(RESULTS_SHAPE)
+        self.results = copy.deepcopy(CATEGORY_SHAPE)
         self.load_results()
 
     def load_results(self):

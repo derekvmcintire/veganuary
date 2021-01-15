@@ -10,7 +10,7 @@ class OverallStandingsModel:
     def __init__(self, last_stage: int, valid_zwids):
         self.last_stage = last_stage
         self.valid_zwids = valid_zwids
-        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        self.registered_zwids = copy.deepcopy(CATEGORY_SHAPE)
 
     def load_stages_results(self):
         # Loads the results data

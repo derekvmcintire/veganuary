@@ -3,8 +3,7 @@ import copy
 from dataclasses import dataclass
 
 from data_shapes import (
-    RIDERS_SHAPE,
-    REGISTERED_ZWIDS_SHAPE
+    CATEGORY_SHAPE
 )
 
 
@@ -22,9 +21,9 @@ class RiderModel:
 
 class RidersCollection:
     def __init__(self):
-        self.registered_riders = copy.deepcopy(RIDERS_SHAPE)
+        self.registered_riders = copy.deepcopy(CATEGORY_SHAPE)
         self.load_rider_list()
-        self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        self.registered_zwids = copy.deepcopy(CATEGORY_SHAPE)
         self.load_registered_zwids()
 
     def load_rider_list(self):
@@ -63,4 +62,4 @@ class RidersCollection:
         for cat in categories:
             for rider in self.registered_riders[cat]:
                 if int(rider.zwid) == zwid:
-                    return rider.name
+                    return rider

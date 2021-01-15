@@ -9,19 +9,24 @@ from models.prime_results_model import PrimeResultsCollection
 from zp_request_library import ZPRequests
 
 from data_shapes import (
-    RIDERS_SHAPE,
-    RESULTS_SHAPE,
-    FILTERED_STAGE_RESULTS_SHAPE,
-    REGISTERED_ZWIDS_SHAPE,
+    CATEGORY_SHAPE,
     WINNING_TIMES_SHAPE,
-    PRIME_RESULTS_SHAPE,
+    PRIME_CATEGORY_SHAPE,
     SINGLE_POINTS,
     DOUBLE_POINTS
 )
 
 
 class StageModel:
-    def __init__(self, event_id, sprints = [], koms = [], sprint_points = DOUBLE_POINTS, kom_points = SINGLE_POINTS):
+    def __init__(
+            self, event_id,
+            finish_sprint = False,
+            sprints = [],
+            koms = [],
+            sprint_points = DOUBLE_POINTS,
+            kom_points = SINGLE_POINTS,
+            finish_points = DOUBLE_POINTS
+        ):
         '''
             event_id: (int) the zwift power event id
             sprints: (list) list of sprint ids
@@ -31,6 +36,8 @@ class StageModel:
         self.event_id = event_id
         self.sprints = sprints
         self.koms = koms
+        self.finish_sprint = finish_sprint
+        self.finish_points = finish_points
         self.zp_requests = ZPRequests(event_id)
         self.results_data = self.zp_requests.get_results()["data"]
         self.prime_data = self.zp_requests.get_prime_results()["data"]
@@ -46,12 +53,12 @@ class StageModel:
     def clear_model(self):
         # wipe all data
         self.results_data = []
-        self.riders = copy.deepcopy(RIDERS_SHAPE)
-        self.stage_results = copy.deepcopy(RESULTS_SHAPE)
-        self.filtered_stage_results = copy.deepcopy(FILTERED_STAGE_RESULTS_SHAPE)
-        # self.registered_zwids = copy.deepcopy(REGISTERED_ZWIDS_SHAPE)
+        self.riders = copy.deepcopy(CATEGORY_SHAPE)
+        self.stage_results = copy.deepcopy(CATEGORY_SHAPE)
+        self.filtered_stage_results = copy.deepcopy(CATEGORY_SHAPE)
+        # self.registered_zwids = copy.deepcopy(CATEGORY_SHAPE)
         self.winning_times = copy.deepcopy(WINNING_TIMES_SHAPE)
-        self.prime_results = copy.deepcopy(PRIME_RESULTS_SHAPE)
+        self.prime_results = copy.deepcopy(PRIME_CATEGORY_SHAPE)
 
     def print_stage_results(self, category, stage):
         # attempt to create a csv from results
@@ -64,10 +71,21 @@ class StageModel:
 
     def print_prime_results(self, category, stage):
         # attempt to create a csv from results
-        data = self.prime_results_collection.winning_times[category]
+        m_data = self.prime_results_collection.m_winning_times[category]
+        self.create_prime_csv(m_data, category, stage, 'm')
+        w_data = self.prime_results_collection.w_winning_times[category]
+        self.create_prime_csv(w_data, category, stage, 'w')
+
+    def create_prime_csv(self, data, category, stage, gender):
         keys = data.keys()
         for key in keys:
-            with open(f'./results/stage_{stage}/veganuary_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["registered_name", "time", "zwid", "zp_name", "points"])
+            with open(f'./results/stage_{stage}/{gender}_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "time", "zwid", "zp_name", "points"])
                 dict_writer.writeheader()
                 dict_writer.writerows(data[key])
+
+    # @TODO - use this function to calculate sprint points for finish line
+    def calculate_finish_line_sprint_points(self, category):
+        results = self.results_collection.winning_times[category]
+        results_with_points = self.prime_results_collection.add_points_to_custom_prime(results, finish_points)
+        self.prime_results_collection.custom_primes[category]["finish"] = results_with_points
