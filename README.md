@@ -11,7 +11,7 @@ I have input the latest data as CSVs in the `veganuary_data/standings` directory
 #### Notes on Primes
 - Points are configurable, I'm not 100% on which primes were used and which ones were worth how many points, so I made my best guess - you can see which ones I passed in to each stage in the `run_script.py` file
 - Primes are only showing by their ID number for now since it's an extra network request to get their names, I can add that later
-- I added sprint points for both current stages on the finish line. This is also configurable and the name of the prime is `finish` and they are not sorted by gender, so the file names start with `a` i.e. `a_prime_results_c_finish.csv`
+- I added sprint points for both current stages on the finish line. This is also configurable and the name of the prime is `finish` and they are not sorted by gender (yet!), so the file names start with `a` i.e. `a_prime_results_c_finish.csv`
 
 # Getting Results After a New Stage
 - To start, you will need to have git set up locally, clone this repo and have python3 running on your machine, then:
