@@ -62,21 +62,28 @@ class PrimeResultsCollection:
             self.prime_data[cat].append(data)
 
     def build_prime_results(self, data, prime, category):
-            if len(self.prime_results[category][prime]) > 0:
-                for i in range(len(self.prime_results[category][prime])):
-                    if data["msec"][prime] < self.prime_results[category][prime][i]["time"]:
-                        prime_model = self.build_prime_model(data, prime)
-                        self.prime_results[category][prime].insert(i, asdict(prime_model))
-                        break
-                    if (i + 1) == len(self.prime_results[category][prime]):
-                        # if we are on the last entry, then add the prime result to the end
-                        prime_model = self.build_prime_model(data, prime)
-                        self.prime_results[category][prime].append(asdict(prime_model))
-                        break
-            else:
-                # this should only happen on the first entry
-                prime_model = self.build_prime_model(data, prime)
-                self.prime_results[category][prime].append(asdict(prime_model))
+        if len(self.prime_results[category][prime]) > 0:
+            for i in range(len(self.prime_results[category][prime])):
+                if data["msec"][prime] < self.prime_results[category][prime][i]["time"]:
+                    prime_model = self.build_prime_model(data, prime)
+                    self.prime_results[category][prime].insert(i, asdict(prime_model))
+                    break
+                if (i + 1) == len(self.prime_results[category][prime]):
+                    # if we are on the last entry, then add the prime result to the end
+                    prime_model = self.build_prime_model(data, prime)
+                    self.prime_results[category][prime].append(asdict(prime_model))
+                    break
+        else:
+            # this should only happen on the first entry
+            prime_model = self.build_prime_model(data, prime)
+            self.prime_results[category][prime].append(asdict(prime_model))
+
+    def get_prime_results_by_gender(self, results, gender):
+        g_results = []
+        for r in results:
+            if int(r["gender"]) == gender:
+                g_results.append(r)
+        return g_results
 
     def calculate_primes_results(self, category):
         for data in self.prime_data[category]:
@@ -89,21 +96,10 @@ class PrimeResultsCollection:
         for results in self.prime_results[category]:
             primes = data["msec"].keys()
             for prime in primes:
-                m_results = []
-                w_results = []
-                for rider in self.prime_results[category][prime]:
-                    if rider["gender"] == 1:
-                        if len(m_results) == 10:
-                            break
-                        else:
-                            m_results.append(rider)
-                    elif rider["gender"] == 2:
-                        if len(w_results) == 10:
-                            break
-                        else:
-                            w_results.append(rider)
-                m_results_with_points = self.award_points(prime, m_results)
-                w_results_with_points = self.award_points(prime, w_results)
+                m_results = self.get_prime_results_by_gender(self.prime_results[category][prime], 1)
+                w_results = self.get_prime_results_by_gender(self.prime_results[category][prime], 2)
+                m_results_with_points = self.award_points(prime, m_results[:10])
+                w_results_with_points = self.award_points(prime, w_results[:10])
                 self.m_winning_times[category][prime] = m_results_with_points
                 self.w_winning_times[category][prime] = w_results_with_points
 
