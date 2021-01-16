@@ -42,6 +42,8 @@ class StageModel:
         print(f'Setting up model and fetching data for Zwift Power event ID {self.event_id}...')
         self.sprints = sprints
         self.koms = koms
+        self.sprint_points = sprint_points
+        self.kom_points = kom_points
         self.finish_sprint = finish_sprint
         self.finish_points = finish_points
         self.custom_primes = copy.deepcopy(PRIME_CATEGORY_SHAPE)
@@ -60,7 +62,7 @@ class StageModel:
         # instantiate a new PrimeResultsCollection model - loads sprint and kom results
         if self.prime_data:
             self.prime_data = self.zp_requests.prime_results["data"]
-            self.prime_results_collection = PrimeResultsCollection(self.prime_data, self.riders_collection, self.sprints, self.koms)
+            self.prime_results_collection = PrimeResultsCollection(self.prime_data, self.riders_collection, self.sprints, self.koms, self.sprint_points, self.kom_points)
             if self.finish_sprint:
                 for cat in CATEGORIES:
                     self.calculate_finish_line_sprint_points(cat)
@@ -130,6 +132,6 @@ class StageModel:
         for key in keys:
             if data[key] and self.is_valid_prime(key):
                 with open(f'./results/stage_{stage}/{gender}_prime_results_{category}_{key}.csv', 'w', newline='')  as output_file:
-                    dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "time", "zwid", "zp_name", "points"])
+                    dict_writer = csv.DictWriter(output_file, ["registered_name", "gender", "time", "zwid", "team", "zp_name", "points"])
                     dict_writer.writeheader()
                     dict_writer.writerows(data[key])

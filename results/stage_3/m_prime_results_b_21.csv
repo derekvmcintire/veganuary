@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Evan Flater,1,17.882,1063791,E Flater (OTR FRAPPATTAK),20
-Daniel Bolton,1,18.1,558697,Daniel Bolton (LEQP Mistral),15
-Alan Hugill,1,18.295,285500,Alan Hugill  (R3R THUNDER),10
-Daniel unt,1,18.359,182368,Daniel Hunt (LEQP Mistral),8
-Rob Valdes,1,18.507,2694010,Rob Valdes (Islington Cycling Club B),6
-Neil Hodgson,1,18.575,7520,Neil Hodgson (OTR Slakken) ,5
-Jeremy Leal,1,18.935,2893659,Jeremy Leal (OTR OostB),4
-john hughes,1,18.966,1354923,John Hughes (Electricspirit.co B3a),3
-Dave Brodmann,1,19.235,15543,Dave Brodmann &#128304; (TFC),2
-Dean dingle,1,19.975,1373912,Dean Dingle (R3R ACDC),1
+registered_name,gender,time,zwid,team,zp_name,points
+Evan Flater,1,17.882,1063791,,E Flater (OTR FRAPPATTAK),12
+Daniel Bolton,1,18.1,558697,,Daniel Bolton (LEQP Mistral),10
+Alan Hugill,1,18.295,285500,,Alan Hugill  (R3R THUNDER),8
+Daniel unt,1,18.359,182368,,Daniel Hunt (LEQP Mistral),7
+Rob Valdes,1,18.507,2694010,,Rob Valdes (Islington Cycling Club B),6
+Neil Hodgson,1,18.575,7520,,Neil Hodgson (OTR Slakken) ,5
+Jeremy Leal,1,18.935,2893659,,Jeremy Leal (OTR OostB),4
+john hughes,1,18.966,1354923,,John Hughes (Electricspirit.co B3a),3
+Dave Brodmann,1,19.235,15543,,Dave Brodmann &#128304; (TFC),2
+Dean dingle,1,19.975,1373912,,Dean Dingle (R3R ACDC),1

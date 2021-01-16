@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Cheryl Muldoon,2,21.988,113057,Cheryl Muldoon,20
-Evelien Bunnik,2,22.6,1421324,Evelien Bunnik &#127793; &#128007; (Vegan Wasabi),15
-Felicity Caddick,2,23.189,1955420,Felicity C (Socks4Watts WattNots) ,10
-Jo Fleming,2,23.463,490655,Jo Fleming (Vegan Spinach),8
-Mary Dootson,2,23.685,2650031,Mary Dootson &#128039; (R3R A-HA) ,6
-Morgan Bennett,2,23.823,1665071,Morgan Bennett (Vegan CocoNuts),5
-Nadezda Polakova,2,23.866,189794,Nada 78 &#127793; (Vegan Bees),4
-Ruth Breeze,2,24.143,1406512,Ruth Breeze,3
-Cath Walls,2,24.351,2956232,Cath Walls (TEAM VEGAN),2
-Ines Pfeilmeier,2,24.48,1604473,I KP (Vegan Bees),1
+registered_name,gender,time,zwid,team,zp_name,points
+Cheryl Muldoon,2,21.988,113057,,Cheryl Muldoon,12
+Evelien Bunnik,2,22.6,1421324,,Evelien Bunnik &#127793; &#128007; (Vegan Wasabi),10
+Felicity Caddick,2,23.189,1955420,,Felicity C (Socks4Watts WattNots) ,8
+Jo Fleming,2,23.463,490655,,Jo Fleming (Vegan Spinach),7
+Mary Dootson,2,23.685,2650031,,Mary Dootson &#128039; (R3R A-HA) ,6
+Morgan Bennett,2,23.823,1665071,,Morgan Bennett (Vegan CocoNuts),5
+Nadezda Polakova,2,23.866,189794,,Nada 78 &#127793; (Vegan Bees),4
+Ruth Breeze,2,24.143,1406512,,Ruth Breeze,3
+Cath Walls,2,24.351,2956232,,Cath Walls (TEAM VEGAN),2
+Ines Pfeilmeier,2,24.48,1604473,,I KP (Vegan Bees),1

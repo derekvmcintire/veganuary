@@ -17,11 +17,9 @@ stage_3_koms = ['20']
 get_stage_1_results = False
 get_stage_2_results = False
 get_stage_3_results = True
+get_gc_results = False
 
-# x = OverallStandingsModel(2)
-# x.calculate_gc_times()
-# x.rank_gc()
-# breakpoint()
+
 
 
 # ==========================================================#
@@ -65,13 +63,21 @@ if get_stage_2_results:
 # easy on/off toggle for testing
 if get_stage_3_results:
     # create new model
+
     stage_3 = StageModel(
     STAGE_3_EVENT_ID,
     stage_3_sprints,
     stage_3_koms,
     SINGLE_POINTS,
     DOUBLE_POINTS,
-    False
     )
     # print results to csv
     stage_3.print_all_results(3)
+
+# ==========================================================#
+# ======== Run script for general classification ===========#
+# ==========================================================#
+# easy on/off toggle for testing
+if get_gc_results:
+    gc_results = OverallStandingsModel(3)
+    gc_results.print_all_gc_results()

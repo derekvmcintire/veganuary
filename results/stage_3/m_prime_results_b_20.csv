@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Jeroen Speelmans,1,1197.194,1401963,Jeroen Speelmans (LEQP Hunters),12
-Ross Hetherington,1,1199.145,129517,Ross Hetherington &#128012; (R3R ACDC),10
-Lukas Pedersen,1,1199.641,1495980,Lukas Pedersen,8
-James Eastwood,1,1208.725,353326,James Eastwood (Socks4Watts #AeroAF),7
-Derek Mcintire,1,1220.633,955953,Derek McIntire &#9419; (Vegan Arrows),6
-Martijn van der Vis,1,1224.556,1452217,Martijn Van Der Vis (Vegan Barracudas),5
-Alan Hugill,1,1228.672,285500,Alan Hugill  (R3R THUNDER),4
-Evan Flater,1,1240.298,1063791,E Flater (OTR FRAPPATTAK),3
-Patrick Söller,1,1254.971,1462344,Patrick S&ouml;ller (Vegan Bobcats),2
-Ryan Ness,1,1258.8,2858658,Ryan Ness (TFC),1
+registered_name,gender,time,zwid,team,zp_name,points
+Ross Hetherington,1,1199.145,129517,,Ross Hetherington &#128012; (R3R ACDC),20
+Derek Mcintire,1,1220.633,955953,,Derek McIntire &#9419; (Vegan Arrows),15
+Martijn van der Vis,1,1224.556,1452217,,Martijn Van Der Vis (Vegan Barracudas),10
+Alan Hugill,1,1228.672,285500,,Alan Hugill  (R3R THUNDER),8
+Evan Flater,1,1240.298,1063791,,E Flater (OTR FRAPPATTAK),6
+Patrick Söller,1,1254.971,1462344,,Patrick S&ouml;ller (Vegan Bobcats),5
+Ryan Ness,1,1258.8,2858658,,Ryan Ness (TFC),4
+Josh Nordell,1,1258.998,1381321,,Josh Nordell (TFC B52),3
+Neil Hodgson,1,1259.064,7520,,Neil Hodgson (OTR Slakken) ,2
+Daniel unt,1,1259.456,182368,,Daniel Hunt (LEQP Mistral),1

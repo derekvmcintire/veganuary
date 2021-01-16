@@ -19,6 +19,7 @@ class OverallStandingsModel:
         self.last_stage = last_stage
         self.stage_keys = list(range(1, (self.last_stage + 1)))
         self.ranked_gc = copy.deepcopy(CATEGORY_SHAPE)
+        self.gc_calculated_successful = False
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
         self.stages_results = {}
@@ -27,7 +28,7 @@ class OverallStandingsModel:
             self.gc_results = copy.deepcopy(self.stages_results['1'])
             self.calculate_gc_times()
             self.rank_gc()
-            print('Success calculating GC standings, but still need to write functions to print!')
+            self.gc_calculated_successful = True
         except:
             print('Error while trying to calculate GC standings')
 
@@ -115,10 +116,16 @@ class OverallStandingsModel:
                 else:
                     self.ranked_gc[cat].append(result)
 
-        def print_gc_results(self, category):
-            # attempt to create a csv from results
-            data = self.ranked_gc[category]
-            with open(f'./results/gc/cat_{category}_results.csv', 'w', newline='')  as output_file:
-                dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "zwid", "zp_name", "team", "subteam"])
-                dict_writer.writeheader()
-                dict_writer.writerows(data)
+    def print_all_gc_results(self):
+        if self.gc_calculated_successful:
+            print('Success calculating GC standings, printing all categories now!')
+            for cat in CATEGORIES:
+                self.print_gc_results(cat)
+
+    def print_gc_results(self, category):
+        # attempt to create a csv from results
+        data = self.ranked_gc[category]
+        with open(f'./results/gc/cat_{category}_results.csv', 'w', newline='')  as output_file:
+            dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "zwid", "zp_name", "team", "subteam"])
+            dict_writer.writeheader()
+            dict_writer.writerows(data)

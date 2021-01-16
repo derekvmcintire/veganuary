@@ -36,6 +36,7 @@ class PrimeResultsCollection:
             sprint_points = DOUBLE_POINTS,
             kom_points = SINGLE_POINTS
         ):
+        breakpoint()
         self.input_data = input_data
         self.prime_data = copy.deepcopy(CATEGORY_SHAPE)
         self.riders_collection = riders_collection

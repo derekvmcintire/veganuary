@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Patrick Harvey,1,1471.095,88086,Patch Harvey (BRT Badgers),12
-Jason Feltus,1,1503.801,91269,Jason Feltus&#128057; Race3R ,10
-Daniel Ongley,1,1511.379,2791237,Dan Ongley (ART-NEUTRONS),8
-Guy Vandersmissen,1,1524.358,980133,Guy Vdsmis (TFC),7
-James Wyatt,1,1530.548,3244114,James Wyatt &#9419; [Team Vegan],6
-Craig Gritzen,1,1557.12,527678,Craig Gritzen &#9445; (Vegan Crocodiles) ,5
-Robert Moseley,1,1558.652,2863452,Rob Moseley (ART Isotopes),4
-David hill,1,1561.392,964610,david hill (TFC),3
-Jamie Watson,1,1570.15,448811,Jamie Watson (BRT Visma),2
-Warren Honey,1,1593.925,1059788,Warren Honey&#129441; (BRT Badgers),1
+registered_name,gender,time,zwid,team,zp_name,points
+Patrick Harvey,1,1471.095,88086,,Patch Harvey (BRT Badgers),20
+Jason Feltus,1,1503.801,91269,,Jason Feltus&#128057; Race3R ,15
+Daniel Ongley,1,1511.379,2791237,,Dan Ongley (ART-NEUTRONS),10
+Guy Vandersmissen,1,1524.358,980133,,Guy Vdsmis (TFC),8
+James Wyatt,1,1530.548,3244114,,James Wyatt &#9419; [Team Vegan],6
+Craig Gritzen,1,1557.12,527678,,Craig Gritzen &#9445; (Vegan Crocodiles) ,5
+Robert Moseley,1,1558.652,2863452,,Rob Moseley (ART Isotopes),4
+David hill,1,1561.392,964610,,david hill (TFC),3
+Jamie Watson,1,1570.15,448811,,Jamie Watson (BRT Visma),2
+Warren Honey,1,1593.925,1059788,,Warren Honey&#129441; (BRT Badgers),1
