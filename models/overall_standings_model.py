@@ -82,10 +82,14 @@ class OverallStandingsModel:
                     updated_gc_time = Decimal(result["race_time"]) + current_gc_time
                     updated_display_time = str(datetime.timedelta(seconds=float(updated_gc_time)))
                     calculated_result["race_time"] = updated_gc_time
-                    calculated_result["display_time"] = updated_display_time
+                    calculated_result["display_race_time"] = updated_display_time
                     calculated_result["registered_name"] = result["registered_name"]
                     calculated_result["zwid"] = result["zwid"]
                     calculated_result["team"] = result["team"]
+                    calculated_result["category"] = result["category"]
+                    calculated_result["gender"] = result["gender"]
+                    calculated_result["zp_name"] = result["zp_name"]
+                    calculated_result["subteam"] = result["subteam"]
                     if current_gc_time > 0:
                         cat_calculated_results.append(calculated_result)
                 self.gc_results[cat] = cat_calculated_results
@@ -110,3 +114,11 @@ class OverallStandingsModel:
                             break
                 else:
                     self.ranked_gc[cat].append(result)
+
+        def print_gc_results(self, category):
+            # attempt to create a csv from results
+            data = self.ranked_gc[category]
+            with open(f'./results/gc/cat_{category}_results.csv', 'w', newline='')  as output_file:
+                dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "zwid", "zp_name", "team", "subteam"])
+                dict_writer.writeheader()
+                dict_writer.writerows(data)
