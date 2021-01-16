@@ -1,22 +1,34 @@
 import csv
 import json
+import copy
+import datetime
 from decimal import Decimal
 
+from models.riders_model import RidersCollection
+
+from data_shapes import (
+    CATEGORY_SHAPE,
+    CATEGORIES
+)
 
 class OverallStandingsModel:
-    stages_results = []
-    valid_zwids = []
-
-    def __init__(self, last_stage: int, valid_zwids):
+    def __init__(self, last_stage: int):
         self.last_stage = last_stage
-        self.valid_zwids = valid_zwids
-        self.registered_zwids = copy.deepcopy(CATEGORY_SHAPE)
+        self.stage_keys = list(range(1, (self.last_stage + 1)))
+        self.ranked_gc = copy.deepcopy(CATEGORY_SHAPE)
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
+        self.stages_results = {}
+        self.load_stages_results()
+        try:
+            self.gc_results = copy.deepcopy(self.stages_results['1'])
+        except:
+            self.gc_results = copy.deepcopy(CATEGORY_SHAPE)
 
     def load_stages_results(self):
         # Loads the results data
-        for i in range(self.last_stage):
+        for i in range(len(self.stage_keys)):
+            stage = i + 1
             if i > 0:
                 file_a = open(f'./results/stage_{i}/stage_{i}_results_a.csv', 'r')
                 file_b = open(f'./results/stage_{i}/stage_{i}_results_b.csv', 'r')
@@ -30,12 +42,12 @@ class OverallStandingsModel:
                 next(reader_b)
                 next(reader_c)
                 next(reader_d)
-                stage_results = {"stage": str(i)}
+                stage_results = {}
                 stage_results["a"] = self.build_results(reader_a)
                 stage_results["b"] = self.build_results(reader_b)
                 stage_results["c"] = self.build_results(reader_c)
                 stage_results["d"] = self.build_results(reader_d)
-                self.stages_results.append(stage_results)
+                self.stages_results[str(i)] = stage_results
 
     def build_results(self, csv):
         results = []
@@ -44,30 +56,59 @@ class OverallStandingsModel:
                 "registered_name": row[0],
                 "category": row[1],
                 "gender": row[2],
-                "race_time": row[3],
-                "time_diff": row[4],
-                "zid": row[5],
-                "zp_name": row[6],
-                "team,subteam": row[7]
+                "display_time": row[3],
+                "race_time": row[4],
+                "time_diff": row[5],
+                "zwid": row[6],
+                "zp_name": row[7],
+                "team": row[8],
+                "subteam": row[9]
             }
             results.append(result)
         return results
 
-    def get_gc_times(self, category):
-        gc_results = []
-        for r in self.stages_results[0][category]:
-            gc_times = [r["race_time"]]
-            rider_gc_time = 0
-            for i in range(self.last_stage - 1):
-                for z in self.stages_results[i][category]:
-                    if r["zid"] == z["zid"]:
-                        gc_times.append(Decimal(float(z["race_time"])))
-                if len(gc_times) == self.last_stage:
-                    rider_gc_time = sum(gc_times)
-            if rider_gc_time > 0:
-                r["gc_time"] = rider_gc_time
-                gc_results.append(r)
-        return gc_results
+    def calculate_gc_times(self):
+        for key in self.stage_keys[1:]:
+            ## this is wonky why does stage == 'a' and stages results only has '1' in it?
+            for stage in self.stages_results[str(key)]:
+                for cat in CATEGORIES:
+                    cat_calculated_results = []
+                    for result in self.gc_results[cat]:
+                        breakpoint()
+                        calculated_result = {}
+                        current_gc_time = Decimal(self.get_rider_gc_time(result))
+                        updated_gc_time = Decimal(result["race_time"]) + current_gc_time
+                        updated_display_time = str(datetime.timedelta(seconds=float(updated_gc_time)))
+                        calculated_result["race_time"] = updated_gc_time
+                        calculated_result["display_time"] = updated_display_time
+                        calculated_result["registered_name"] = result["registered_name"]
+                        calculated_result["zwid"] = result["zwid"]
+                        calculated_result["team"] = result["team"]
+                        calculated_result["woopidy"] = "doo!"
+                        cat_calculated_results.append(calculated_result)
+                self.gc_results[cat] = cat_calculated_results
+
+    def get_rider_gc_time(self, rider_result):
+        for result in self.gc_results[rider_result['category']]:
+            breakpoint()
+            if result["zwid"] == rider_result['zwid']:
+                return result["race_time"]
+
+    def rank_gc(self):
+        breakpoint()
+        for cat in CATEGORIES:
+            for result in self.gc_results[cat]:
+                if len(self.ranked_gc[cat]) > 0:
+                    for i in range(len(self.ranked_gc[cat])):
+                        if result["race_time"] < self.ranked_gc[cat][i]["race_time"]:
+                            self.ranked_gc[cat].insert(i, result)
+                            break
+                        if (i + 1) == len(self.ranked_gc[cat]):
+                            # if we are on the last entry, then add the result to the end
+                            self.ranked_gc[cat].append(result)
+                            break
+                else:
+                    self.ranked_gc[cat].append(result)
 
     def get_gc_results(self, category):
         data = self.get_gc_times(category)

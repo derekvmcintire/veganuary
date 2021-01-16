@@ -1,4 +1,5 @@
 import pdb
+from models.overall_standings_model import OverallStandingsModel
 from models.stage_model import StageModel
 from zp_request_library import ZPRequests
 from data_shapes import (SINGLE_POINTS, DOUBLE_POINTS)
@@ -10,8 +11,14 @@ stage_2_koms = ['54']
 stage_1_sprints = []
 stage_1_koms = ['48']
 
-get_stage_1_results = True
-get_stage_2_results = True
+get_stage_1_results = False
+get_stage_2_results = False
+
+x = OverallStandingsModel(2)
+x.calculate_gc_times()
+x.rank_gc()
+breakpoint()
+
 
 # ==========================================================#
 # ================ Run script for stage 1 ==================#

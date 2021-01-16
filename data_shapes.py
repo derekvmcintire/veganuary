@@ -5,29 +5,11 @@ CATEGORY_SHAPE = {
     "c": [],
     "d": []
 }
-CATEGORY_SHAPE = {
-    "a": [],
-    "b": [],
-    "c": [],
-    "d": []
-}
-CATEGORY_SHAPE = {
-    "a": [],
-    "b": [],
-    "c": [],
-    "d": []
-}
 PRIME_CATEGORY_SHAPE = {
     "a": {},
     "b": {},
     "c": {},
     "d": {}
-}
-CATEGORY_SHAPE = {
-    "a": [],
-    "b": [],
-    "c": [],
-    "d": []
 }
 WINNING_TIMES_SHAPE = {
     "a": 0,
