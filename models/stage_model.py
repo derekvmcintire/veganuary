@@ -2,7 +2,7 @@ import csv
 import json
 import datetime
 import copy
-from decimal import Decimal
+from decimal import *
 from models.riders_model import RidersCollection
 from models.result_model import ResultsCollection
 from models.prime_results_model import PrimeResultsCollection
@@ -17,6 +17,9 @@ from data_shapes import (
     CATEGORIES
 )
 
+
+# This sets the precision of the Decimal module to 9 places
+getcontext().prec = 9
 
 class StageModel:
     def __init__(

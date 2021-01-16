@@ -3,13 +3,16 @@ import copy
 import datetime
 import json
 from dataclasses import dataclass, asdict
-from decimal import Decimal
+from decimal import *
 
 from data_shapes import (
     WINNING_TIMES_SHAPE,
     CATEGORY_SHAPE
 )
 
+
+# This sets the precision of the Decimal module to 9 places
+getcontext().prec = 9
 
 @dataclass
 class ResultModel:
