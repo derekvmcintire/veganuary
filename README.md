@@ -46,9 +46,9 @@ get_stage_1_results = True
 if get_stage_1_results:
     # create new model
     stage_1 = StageModel(
-      STAGE_2_EVENT_ID, // 1429958
-      stage_2_sprints, // [`54`, `61`, `63`]
-      stage_2_koms, // [`33`, `21`]
+      STAGE_1_EVENT_ID, // 1429958
+      stage_1_sprints, // [`54`, `61`, `63`]
+      stage_1_koms, // [`33`, `21`]
       SINGLE_POINTS, // [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
       DOUBLE_POINTS, // [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
       True, // True
@@ -64,7 +64,7 @@ run the script - open terminal (for mac) and type
 python3 run_script.py
 ```
 
-You should see something like:
+You should see something like this for each stage:
 ```
 ➜  veganuary git:(main) ✗ python3 run_script.py
 ===== Setting up model and fetching data for Zwift Power event ID 1429958... =====
@@ -78,16 +78,5 @@ You should see something like:
 ===== Exporting Cat C sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
 ===== Exporting Cat D results for stage 1: Zwift Power event ID 1429958 =====
 ===== Exporting Cat D sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
-===== Setting up model and fetching data for Zwift Power event ID 1471415... =====
-===== Results data successfully retrieved for Zwift Power event ID 1471415... =====
-===== Prime data successfully retrieved for 1471415... =====
-===== Exporting Cat A results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat B results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat B sprint and KOM results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat C results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat C sprint and KOM results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat D results for stage 2: Zwift Power event ID 1471415 =====
-===== Exporting Cat D sprint and KOM results for stage 2: Zwift Power event ID 1471415 =====
 ➜  veganuary git:(main) 
 ```
