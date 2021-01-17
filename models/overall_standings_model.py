@@ -19,6 +19,7 @@ class OverallStandingsModel:
         self.last_stage = last_stage
         self.stage_keys = list(range(1, (self.last_stage + 1)))
         self.ranked_gc = copy.deepcopy(CATEGORY_SHAPE)
+        self.ranked_wgc = copy.deepcopy(CATEGORY_SHAPE)
         self.gc_calculated_successful = False
         # instantiate a new RidersCollection and load rider data
         self.riders_collection = RidersCollection()
@@ -108,24 +109,30 @@ class OverallStandingsModel:
                     for i in range(len(self.ranked_gc[cat])):
                         if result["race_time"] < self.ranked_gc[cat][i]["race_time"]:
                             self.ranked_gc[cat].insert(i, result)
+                            if result["gender"] == '2':
+                                self.ranked_wgc[cat].insert(i, result)
                             break
                         if (i + 1) == len(self.ranked_gc[cat]):
                             # if we are on the last entry, then add the result to the end
                             self.ranked_gc[cat].append(result)
+                            if result["gender"] == '2':
+                                self.ranked_wgc[cat].append(result)
                             break
                 else:
                     self.ranked_gc[cat].append(result)
+                    if result["gender"] == '2':
+                        self.ranked_wgc[cat].append(result)
 
     def print_all_gc_results(self):
         if self.gc_calculated_successful:
-            print('Success calculating GC standings, printing all categories now!')
+            print('===== Success calculating GC standings, printing all categories now! =====')
             for cat in CATEGORIES:
-                self.print_gc_results(cat)
+                self.print_gc_results(cat, self.ranked_gc[cat], 'a')
+                self.print_gc_results(cat, self.ranked_wgc[cat], 'w')
 
-    def print_gc_results(self, category):
+    def print_gc_results(self, category, data, gender):
         # attempt to create a csv from results
-        data = self.ranked_gc[category]
-        with open(f'./results/gc/cat_{category}_results.csv', 'w', newline='')  as output_file:
+        with open(f'./results/gc/cat_{category}_{gender}_results.csv', 'w', newline='')  as output_file:
             dict_writer = csv.DictWriter(output_file, ["registered_name", "category", "gender", "display_race_time", "race_time", "zwid", "zp_name", "team", "subteam"])
             dict_writer.writeheader()
             dict_writer.writerows(data)
