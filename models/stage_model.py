@@ -39,7 +39,7 @@ class StageModel:
         '''
         # initialize class properties
         self.event_id = event_id
-        print(f'Setting up model and fetching data for Zwift Power event ID {self.event_id}...')
+        print(f'===== Setting up model and fetching data for Zwift Power event ID {self.event_id}... =====')
         self.sprints = sprints
         self.koms = koms
         self.sprint_points = sprint_points
@@ -52,6 +52,14 @@ class StageModel:
         self.zp_requests = ZPRequests(event_id)
         self.results_data = self.zp_requests.get_results()["data"]
         self.prime_data = self.zp_requests.get_prime_results()["data"]
+        if len(self.results_data) > 0:
+            print(f'===== Results data successfully retrieved for Zwift Power event ID {self.event_id}... =====')
+        else:
+            print(f'===== No result data found for Zwift Power event ID {self.event_id}... =====')
+        if len(self.prime_data) > 0:
+            print(f'===== Prime data successfully retrieved for {self.event_id}... =====')
+        else:
+            print(f'===== No prime data found for Zwift Power event ID {self.event_id}... =====')
 
         # instantiate a new RidersCollection model - loads rider data
         self.riders_collection = RidersCollection()
@@ -102,9 +110,9 @@ class StageModel:
     def print_all_results(self, stage):
         # attempt to print both stage results and prime results for all cats
         for cat in CATEGORIES:
-            print(f'Exporting Cat {cat.upper()} results for stage {stage}: Zwift Power event ID {self.event_id}')
+            print(f'===== Exporting Cat {cat.upper()} results for stage {stage}: Zwift Power event ID {self.event_id} =====')
             self.print_stage_results(cat, stage)
-            print(f'Exporting Cat A sprint and KOM results for stage {stage}: Zwift Power event ID {self.event_id}')
+            print(f'===== Exporting Cat {cat.upper()} sprint and KOM results for stage {stage}: Zwift Power event ID {self.event_id} =====')
             self.print_prime_results(cat, stage)
 
     def print_stage_results(self, category, stage):

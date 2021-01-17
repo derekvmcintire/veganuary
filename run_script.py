@@ -14,9 +14,9 @@ stage_1_koms = ['48']
 stage_3_sprints = ['21']
 stage_3_koms = ['20']
 
-get_stage_1_results = False
-get_stage_2_results = False
-get_stage_3_results = True
+get_stage_1_results = True
+get_stage_2_results = True
+get_stage_3_results = False
 get_gc_results = False
 
 

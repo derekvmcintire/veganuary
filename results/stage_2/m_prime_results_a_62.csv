@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Hywel Davies,1,9.809,1119043,Hywel Davies (BRT),20
-Chris Smart,1,9.83,1157845,CHRIS SMART (Nopinz R3R),15
-Scott Gleason,1,9.891,429529,Scott Gleason (Nopinz R3R),10
-Duncan Johnson,1,9.902,2124922,Duncan Johnson (OTR),8
-Olivier Symoens,1,10.018,1515010,Olivier Symoens,6
-Alex TenElshof,1,10.109,485822,Alex TenElshof &#127755; (Finesse),5
-Nick Hird,1,10.116,54593,Nick Hird (CRYO RDT Men),4
-Hans-Georg Becker,1,10.192,1765,H-G Becker (VZT) &#128062;,3
-Joseph Chudyk,1,10.211,2568352,Joseph Chudyk (Finesse),2
-Joel Chidley,1,10.231,2366199,Joel Chidley (R3R 1Direction),1
+registered_name,gender,time,zwid,team,zp_name,points
+Hywel Davies,1,9.809,1119043,,Hywel Davies (BRT),12
+Chris Smart,1,9.83,1157845,,CHRIS SMART (Nopinz R3R),10
+Scott Gleason,1,9.891,429529,,Scott Gleason (Nopinz R3R),8
+Duncan Johnson,1,9.902,2124922,,Duncan Johnson (OTR),7
+Olivier Symoens,1,10.018,1515010,,Olivier Symoens,6
+Alex TenElshof,1,10.109,485822,,Alex TenElshof &#127755; (Finesse),5
+Nick Hird,1,10.116,54593,,Nick Hird (CRYO RDT Men),4
+Hans-Georg Becker,1,10.192,1765,,H-G Becker (VZT) &#128062;,3
+Joseph Chudyk,1,10.211,2568352,,Joseph Chudyk (Finesse),2
+Joel Chidley,1,10.231,2366199,,Joel Chidley (R3R DEV INXS),1

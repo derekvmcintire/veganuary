@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Oliver Milk,1,20.586,50486,Oliver Milk,20
-Robert McEwan,1,20.823,619770,Robert McEwan (TFC Typhoon),15
-Nick Hird,1,21.073,54593,Nick Hird (CRYO RDT Men),10
-Olivier Symoens,1,21.102,1515010,Olivier Symoens,8
-Hywel Davies,1,21.336,1119043,Hywel Davies (BRT),6
-Steven Brierley,1,21.377,43160,Steven Brierley (Nopinz R3R),5
-Leon O'Regan,1,21.65,397219,Leon O&#039;Regan (TFC),4
-Scott Gleason,1,22.058,429529,Scott Gleason (Nopinz R3R),3
-Alex rockwell,1,22.474,960543,Alex  Rockwell (R3R DEV ABBA),2
-Pete Brookes,1,22.489,1012404,Pete Brookes (ART Nuclear),1
+registered_name,gender,time,zwid,team,zp_name,points
+Oliver Milk,1,20.586,50486,,Oliver Milk,12
+Robert McEwan,1,20.823,619770,,Robert McEwan (TFC Typhoon),10
+Nick Hird,1,21.073,54593,,Nick Hird (CRYO RDT Men),8
+Olivier Symoens,1,21.102,1515010,,Olivier Symoens,7
+Hywel Davies,1,21.336,1119043,,Hywel Davies (BRT),6
+Steven Brierley,1,21.377,43160,,Steven Brierley (Nopinz R3R),5
+Leon O'Regan,1,21.65,397219,,Leon O&#039;Regan (TFC),4
+Scott Gleason,1,22.058,429529,,Scott Gleason (Nopinz R3R),3
+Alex rockwell,1,22.474,960543,,Alex  Rockwell (R3R DEV ABBA),2
+Pete Brookes,1,22.489,1012404,,Pete Brookes (ART Nuclear),1

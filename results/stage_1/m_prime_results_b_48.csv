@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Alan Hugill,1,14.477,285500,Alan Hugill  (R3R THUNDER),12
-Nikolaj Therkelsen,1,14.515,150173,Nikolaj Therkelsen,10
-Rob Valdes,1,15.38,2694010,Rob Valdes (Islington Cycling Club B),8
-Carlos Marin,1,15.674,2533741,Carlos Marin (Vegan Nighthawks),7
-Derek Mcintire,1,15.743,955953,Derek McIntire &#9419; (Vegan Arrows),6
-Karel Smeets,1,15.965,1402075,Karel Smeets (Vegan Badgers),5
-Daniel unt,1,15.97,182368,Daniel Hunt (LEQP Mistral),4
-Jeff Weinert,1,16.215,6555,jeff weinert (Base Media Racing),3
-Neil Hodgson,1,16.233,7520,Neil Hodgson (OTR Slakken) ,2
-James Eastwood,1,16.307,353326,James Eastwood (Socks4Watts #AeroAF),1
+registered_name,gender,time,zwid,team,zp_name,points
+Alan Hugill,1,14.477,285500,,Alan Hugill  (R3R THUNDER),20
+Nikolaj Therkelsen,1,14.515,150173,,Nikolaj Therkelsen,15
+Rob Valdes,1,15.38,2694010,,Rob Valdes (Islington Cycling Club B),10
+Carlos Marin,1,15.674,2533741,,Carlos Marin (Vegan Nighthawks),8
+Derek Mcintire,1,15.743,955953,,Derek McIntire &#9419; (Vegan Arrows),6
+Karel Smeets,1,15.965,1402075,,Karel Smeets (Vegan Badgers),5
+Daniel unt,1,15.97,182368,,Daniel Hunt (LEQP Mistral),4
+Jeff Weinert,1,16.215,6555,,jeff weinert (Base Media Racing),3
+Neil Hodgson,1,16.233,7520,,Neil Hodgson (OTR Slakken) ,2
+James Eastwood,1,16.307,353326,,James Eastwood (Socks4Watts #AeroAF),1

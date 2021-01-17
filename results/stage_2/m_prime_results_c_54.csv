@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Philip Sudworth,1,35.188,314508,Philip Sudworth (TFC),12
-Craig Christie ,1,35.257,130703,Craig Christie  (BRT Badgers),10
-Patrick Harvey,1,37.677,88086,Patch Harvey (BRT Badgers),8
-David hill,1,38.036,964610,david hill (TFC),7
-Warren Honey,1,40.867,1059788,Warren Honey&#129441; (BRT Badgers),6
-Jason Feltus,1,41.318,91269,Jason Feltus&#128057; (CWkgCC),5
-Niccolò Martinoli,1,41.438,1354660,1616 Niccol&ograve; Martinoli (Team Italy),4
-Jamie Watson,1,43.258,448811,Jamie Watson (BRT Visma),3
-Tim Mennell,1,44.235,2610238,Tim Mennell (TFC),2
-Alex Semple,1,44.706,2507868,Alex Semple (ART Neutrons),1
+registered_name,gender,time,zwid,team,zp_name,points
+Philip Sudworth,1,35.188,314508,,Philip Sudworth (TFC),20
+Craig Christie ,1,35.257,130703,,Craig Christie  (BRT Badgers),15
+Patrick Harvey,1,37.677,88086,,Patch Harvey (BRT Badgers),10
+David hill,1,38.036,964610,,david hill (TFC),8
+Cheryl Muldoon,2,40.309,113057,,Cheryl Muldoon,20
+Warren Honey,1,40.867,1059788,,Warren Honey&#129441; (BRT Badgers),5
+Jason Feltus,1,41.318,91269,,Jason Feltus&#128057; Race3R ,4
+Niccolò Martinoli,1,41.438,1354660,,1616 Niccol&ograve; Martinoli (Team Italy),3
+Ines Pfeilmeier,2,41.84,1604473,,I KP (Vegan Bees),15
+Evelien Bunnik,2,42.885,1421324,,Evelien Bunnik &#127793; &#128007; (Vegan Wasabi),10

@@ -1,11 +1,11 @@
-registered_name,gender,time,zwid,zp_name,points
-Fiona Thomson,2,28.449,533788,Fiona Thomson (CMA),20
-Ladean Unser,2,28.63,86000,Ladean Unser [WTRL] (DraftingDinos2),15
-Mary Swindles,2,29.196,1140029,Mary Swindles (ART Fusion),10
-Dorothy Gibson,2,30.343,143477,dottie g 2156 [WTRL](DraftingDinosUK1),8
-Ellen Van Eeckhout,2,30.535,2836546,Ellen Van Eeckhout [Team Vegan],6
-Amy Morris,2,30.654,2733583,Amy Morris23 [WTRL] (DraftingDinos1),5
-Naomi Bright,2,30.665,2885796,Naomi Bright (Vegan Fireflies) ,4
-Steffi Köhler ,2,31.626,3096003,mookla tm [team vegan],3
-Niene Niene ,2,31.843,1464527,Niene Niene  (KC-M1),2
-Jen Collins,2,34.675,2547684,Jen Collins[VEGAN fireflies],1
+registered_name,gender,time,zwid,team,zp_name,points
+Fiona Thomson,2,28.449,533788,,Fiona Thomson (CMA),12
+Ladean Unser,2,28.63,86000,,Ladean Unser [WTRL] (DraftingDinos2),10
+Mary Swindles,2,29.196,1140029,,Mary Swindles (AHDR HotToddies),8
+Dorothy Gibson,2,30.343,143477,,dottie g 2156 [WTRL](DraftingDinosUK1),7
+Ellen Van Eeckhout,2,30.535,2836546,,Ellen Van Eeckhout [Team Vegan],6
+Amy Morris,2,30.654,2733583,,Amy Morris23 [WTRL] (DraftingDinos1),5
+Naomi Bright,2,30.665,2885796,,Naomi Bright (Vegan Fireflies) ,4
+Steffi Köhler ,2,31.626,3096003,,mookla tm [team vegan],3
+Niene Niene ,2,31.843,1464527,,Niene Niene  (KC-M1),2
+Jen Collins,2,34.675,2547684,,Jen Collins[VEGAN fireflies],1

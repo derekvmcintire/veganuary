@@ -41,9 +41,9 @@ class ZPRequests:
     def get_results(self):
         if self.results:
             return self.results
-        return None
+        return []
 
     def get_prime_results(self):
         if self.prime_results:
             return self.prime_results
-        return None
+        return []

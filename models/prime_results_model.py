@@ -36,7 +36,6 @@ class PrimeResultsCollection:
             sprint_points = DOUBLE_POINTS,
             kom_points = SINGLE_POINTS
         ):
-        breakpoint()
         self.input_data = input_data
         self.prime_data = copy.deepcopy(CATEGORY_SHAPE)
         self.riders_collection = riders_collection
@@ -97,7 +96,8 @@ class PrimeResultsCollection:
         for results in self.prime_results[category]:
             primes = data["msec"].keys()
             for prime in primes:
-                m_results = self.get_prime_results_by_gender(self.prime_results[category][prime], 1)
+                # m_results = self.get_prime_results_by_gender(self.prime_results[category][prime], 1)
+                m_results = self.prime_results[category][prime]
                 w_results = self.get_prime_results_by_gender(self.prime_results[category][prime], 2)
                 m_results_with_points = self.award_points(prime, m_results[:10])
                 w_results_with_points = self.award_points(prime, w_results[:10])
