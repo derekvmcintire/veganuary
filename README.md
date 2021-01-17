@@ -20,7 +20,12 @@ I have input the latest data as CSVs in the `veganuary_data/standings` directory
 - Get the sprint and kom IDs
 
 ## Modify the get_results.py file
-- Step 1 - create a new instance of `StageModel` and pass it:
+- Step 1 - Create variables for:
+  - ZP event ID
+  - list of sprint IDs
+  - list of KOM IDs
+  - a toggle (True/False) for running this piece of code
+- Step 2 - create a new instance of `StageModel` and pass it:
   - the Zwift Power Event ID (int) i.e. `12345656`
   - A list of sprint IDs (list) i.e. ```[`54`, `61`, `63`]```
   - A list of K/QOM IDs (list) i.e. ```[`33`, `21`]```
@@ -29,36 +34,28 @@ I have input the latest data as CSVs in the `veganuary_data/standings` directory
   - [OPTIONAL]: the finishing sprint flag (bool) i.e. `True`
   - [OPTIONAL]: if finishing sprint flat is `True` you must provide a points system (list) i.e. `[20, 15, 10, 8, 6, 5, 4, 3, 2, 1]`
 ```
+STAGE_1_EVENT_ID = 1429958
+stage_1_sprints = []
+stage_1_koms = ['48']
+get_stage_1_results = True
+  
 # ==========================================================#
-# ================ Run script for stage 2 ==================#
+# ================ Run script for stage 1 ==================#
 # ==========================================================#
-  print('Fetching data for stage 2...')
-  stage_2 = StageModel(
-  STAGE_2_EVENT_ID, // 12345656
-  stage_2_sprints, // [`54`, `61`, `63`]
-  stage_2_koms, // [`33`, `21`]
-  SINGLE_POINTS, // [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
-  DOUBLE_POINTS, // [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
-  True, // True
-  DOUBLE_POINTS // [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
-  )
-  stage_2.print_stage_results('a', 2)
-  print('Exporting Cat A results for stage 2')
-  stage_2.print_stage_results('b', 2)
-  print('Exporting Cat B results for stage 2')
-  stage_2.print_stage_results('c', 2)
-  print('Exporting Cat C results for stage 2')
-  stage_2.print_stage_results('d', 2)
-  print('Exporting Cat D results for stage 2')
-  stage_2.print_prime_results('a', 2)
-  print('Exporting Cat A sprint and KOM results for stage 2')
-  stage_2.print_prime_results('b', 2)
-  print('Exporting Cat B sprint and KOM results for stage 2')
-  stage_2.print_prime_results('c', 2)
-  print('Exporting Cat C sprint and KOM results for stage 2')
-  stage_2.print_prime_results('d', 2)
-  print('Exporting Cat D sprint and KOM results for stage 2')
-  print('Done!')
+# easy on/off toggle for testing
+if get_stage_1_results:
+    # create new model
+    stage_1 = StageModel(
+      STAGE_1_EVENT_ID, // 1429958
+      stage_1_sprints, // [`54`, `61`, `63`]
+      stage_1_koms, // [`33`, `21`]
+      SINGLE_POINTS, // [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
+      DOUBLE_POINTS, // [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
+      True, // True
+      DOUBLE_POINTS // [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
+    )
+    # print results to csv
+    stage_1.print_all_results(1)
 ```
 
 ## Run the script
@@ -67,26 +64,19 @@ run the script - open terminal (for mac) and type
 python3 run_script.py
 ```
 
-You should see something like:
+You should see something like this for each stage:
 ```
 ➜  veganuary git:(main) ✗ python3 run_script.py
-Setting up model and fetching data for Zwift Power event ID 1429958...
-Exporting Cat A results for stage 1: Zwift Power event ID 1429958
-Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
-Exporting Cat B results for stage 1: Zwift Power event ID 1429958
-Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
-Exporting Cat C results for stage 1: Zwift Power event ID 1429958
-Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
-Exporting Cat D results for stage 1: Zwift Power event ID 1429958
-Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958
-Setting up model and fetching data for Zwift Power event ID 1471415...
-Exporting Cat A results for stage 2: Zwift Power event ID 1471415
-Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
-Exporting Cat B results for stage 2: Zwift Power event ID 1471415
-Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
-Exporting Cat C results for stage 2: Zwift Power event ID 1471415
-Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
-Exporting Cat D results for stage 2: Zwift Power event ID 1471415
-Exporting Cat A sprint and KOM results for stage 2: Zwift Power event ID 1471415
+===== Setting up model and fetching data for Zwift Power event ID 1429958... =====
+===== Results data successfully retrieved for Zwift Power event ID 1429958... =====
+===== Prime data successfully retrieved for 1429958... =====
+===== Exporting Cat A results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat A sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat B results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat B sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat C results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat C sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat D results for stage 1: Zwift Power event ID 1429958 =====
+===== Exporting Cat D sprint and KOM results for stage 1: Zwift Power event ID 1429958 =====
 ➜  veganuary git:(main) 
 ```
