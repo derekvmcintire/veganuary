@@ -27,41 +27,17 @@ SINGLE_POINTS = [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
 DOUBLE_POINTS = [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
 SPRINT_TYPE = 1
 KOM_TYPE = 2
-OVERALL_RSULTS_SHAPE = {
-    "a": {
-        "individual_gc": [],
-        "womens_gc": [],
-        "womens_sprint": [],
-        "qom": [],
-        "team_gc": [],
-        "sprint": [],
-        "kom": []
+PRIME_IDS = {
+    '1': {
+        KOM_TYPE: ['48'],
+        SPRINT_TYPE: []
     },
-    "b": {
-        "individual_gc": [],
-        "womens_gc": [],
-        "womens_sprint": [],
-        "qom": [],
-        "team_gc": [],
-        "sprint": [],
-        "kom": []
+    '2': {
+        KOM_TYPE: ['54'],
+        SPRINT_TYPE: ['59', '61', '62']
     },
-    "c": {
-        "individual_gc": [],
-        "womens_gc": [],
-        "womens_sprint": [],
-        "qom": [],
-        "team_gc": [],
-        "sprint": [],
-        "kom": []
-    },
-    "d": {
-        "individual_gc": [],
-        "womens_gc": [],
-        "womens_sprint": [],
-        "qom": [],
-        "team_gc": [],
-        "sprint": [],
-        "kom": []
-    },
+    '3': {
+        KOM_TYPE: ['20'],
+        SPRINT_TYPE: ['21']
+    }
 }

@@ -2,17 +2,17 @@ import pdb
 from models.overall_standings_model import OverallStandingsModel
 from models.stage_model import StageModel
 from zp_request_library import ZPRequests
-from data_shapes import (SINGLE_POINTS, DOUBLE_POINTS)
+from data_shapes import (SINGLE_POINTS, DOUBLE_POINTS, PRIME_IDS, SPRINT_TYPE, KOM_TYPE)
 
 STAGE_1_EVENT_ID = 1429958
 STAGE_2_EVENT_ID = 1471415
 STAGE_3_EVENT_ID = 1514103
-stage_2_sprints = ['59', '61', '62']
-stage_2_koms = ['54']
-stage_1_sprints = []
-stage_1_koms = ['48']
-stage_3_sprints = ['21']
-stage_3_koms = ['20']
+stage_1_sprints = PRIME_IDS['1'][SPRINT_TYPE]
+stage_1_koms = PRIME_IDS['1'][KOM_TYPE]
+stage_2_sprints = PRIME_IDS['2'][SPRINT_TYPE]
+stage_2_koms = PRIME_IDS['2'][KOM_TYPE]
+stage_3_sprints = PRIME_IDS['3'][SPRINT_TYPE]
+stage_3_koms = PRIME_IDS['3'][KOM_TYPE]
 
 # toggles
 get_stage_1_results = False
