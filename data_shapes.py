@@ -39,5 +39,9 @@ PRIME_IDS = {
     '3': {
         KOM_TYPE: ['20'],
         SPRINT_TYPE: ['21']
+    },
+    '4': {
+        KOM_TYPE: ['2', '17'],
+        SPRINT_TYPE: ['3']
     }
 }
