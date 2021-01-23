@@ -98,7 +98,7 @@ if get_stage_4_results:
         DOUBLE_POINTS
     )
     # print results to csv
-    stage_1.print_all_results(1)
+    stage_4.print_all_results(4)
 
 
 # ==========================================================#
