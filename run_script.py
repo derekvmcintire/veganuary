@@ -8,24 +8,24 @@ STAGE_1_EVENT_ID = 1429958
 STAGE_2_EVENT_ID = 1471415
 STAGE_3_EVENT_ID = 1514103
 STAGE_4_EVENT_ID = 1563324
+STAGE_5_EVENT_ID = 1585943
 stage_1_sprints = PRIME_IDS['1'][SPRINT_TYPE]
 stage_1_koms = PRIME_IDS['1'][KOM_TYPE]
 stage_2_sprints = PRIME_IDS['2'][SPRINT_TYPE]
 stage_2_koms = PRIME_IDS['2'][KOM_TYPE]
 stage_3_sprints = PRIME_IDS['3'][SPRINT_TYPE]
 stage_3_koms = PRIME_IDS['3'][KOM_TYPE]
-stage_4_sprints = PRIME_IDS['4'][SPRINT_TYPE]
-stage_4_koms = PRIME_IDS['4'][KOM_TYPE]
 
 # toggles
 get_stage_1_results = False
 get_stage_2_results = False
 get_stage_3_results = False
-get_stage_4_results = True
+get_stage_4_results = False
+get_stage_5_results = True
 get_gc_results = True
 
 # number of stages to use for gc
-number_of_stages = 4
+number_of_stages = 5
 
 
 # ==========================================================#
@@ -99,6 +99,19 @@ if get_stage_4_results:
     )
     # print results to csv
     stage_4.print_all_results(4)
+
+
+# ==========================================================#
+# ================ Run script for stage 5 ==================#
+# ==========================================================#
+# easy on/off toggle for testing
+if get_stage_5_results:
+    # create new model
+    stage_5 = StageModel(
+        STAGE_5_EVENT_ID,
+    )
+    # print results to csv
+    stage_5.print_all_results(5)
 
 
 # ==========================================================#
